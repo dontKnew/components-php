@@ -1,0 +1,31 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Text Editor </title>
+    <link href="summernote/summernote-lite.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <textarea name="title" id="summernote" cols="30" rows="10"></textarea>
+    <button id="button">submit</button>
+
+    <script src="summernote/jquery-3.4.1.slim.min.js"></script>
+    <script src="summernote/summernote-lite.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('#summernote').summernote({
+            tabsize: 2,
+            height: 120,
+            codemirror: { // codemirror options
+                theme: 'monokai'
+            }
+        });
+        $("#button").click(function(){
+
+          console.warn($("#summernote").val());
+
+
+        })
+      });
+    </script>
+  </body>
+</html>
