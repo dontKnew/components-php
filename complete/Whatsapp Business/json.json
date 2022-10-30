@@ -1,0 +1,43 @@
+{
+  "messaging_product": "whatsapp",
+  "to": 917053876421,
+  "type": "template",
+  "template":
+  {
+    "name": "rapidex_tracking",
+    "language":
+    {
+      "code": "en_GB"
+    },
+    "component": [
+      {
+        "type": "header",
+        "parameters":
+        {
+          "type": "image",
+          "image":
+          {
+            "link": "https://rapidexworldwide.com/assets/img/logo.png"
+          }
+        }
+      },
+      {
+        "type": "body",
+        "parameters":
+        {
+          "type": "text",
+          "text": "Rahul Singh"
+        }
+      },
+      {
+        "type": "button",
+        "sub_type": "call_to_action",
+        "index": "0",
+        "parameters":
+        {
+          "type": "url",
+          "url": "?id=123456789"
+        }
+      }]
+  }
+}
