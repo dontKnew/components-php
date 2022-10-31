@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rainbowTheme compatibility="1.0" basename="atozSEO" app="AtoZ SEO Tools" url="http://prothemes.biz/">
+    <themeDetails>
+        <name>SimpleX Theme</name>
+        <themeBaseName>simplex-theme</themeBaseName>
+        <description>SimpleX template for AtoZ SEO Tools</description>
+        <version>1.0</version>
+        <author>Balaji</author>
+        <authorEmail>rainbowbalajib@gmail.com</authorEmail>
+        <authorWebsite>http://prothemes.biz/</authorWebsite>
+        <copyright>Copyright &#169; 2018 ProThemes.Biz</copyright>
+        <preview>img/preview.png</preview>
+        <builder>builder/client/simpleX/simplex-theme</builder>
+    </themeDetails>
+</rainbowTheme>
