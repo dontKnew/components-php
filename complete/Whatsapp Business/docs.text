@@ -12,8 +12,9 @@
         EAAMKFcmN5CsBACZA892FUh6gKXBrxBd90Ai1rvK2kH3DMMyUykUcMfrZAlmeDHJ9nAaPIPRRYFkP80CFpPCSiAZBZAC2t0Gr0xGzKnuaB4OFIsNp2grxSkceYAAtpGbwZAmqXGttJbuWiGavA3n5AsR61bg8ZCP8KjAx8bk0fit5DmMpO7lN3WCe3SW6juh8VJNGIuBaFcUPzVUaiROJnDjNS2dDkj4YoZD
     -> Message Template
         *Hello {{1}}*,
-        Your shipment has been picked up by Rapidex, It will be delivery soon and we will update you through Whatsapp messages 🙃.
+        Your shipment  has been out for delivery Please stay active for we will contact you.🙃.
         https://rapidexworldwide.com/tracking-status.php // question might be not accepting..
+
      ->  server :  https://graph.facebook.com/v15.0/100995949490042/messages
      -> https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates/
 
