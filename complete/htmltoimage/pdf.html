@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 10px;
+        padding: 5px;
+    }
+    div {
+        margin-top:5px;
+        background: blue;
+        width:100%;
+        height: 200px;
+        padding: 5px;
+    }
+    div > h1 {
+        color:red;
+
+    }
+</style>
+<body>
+<button id="download">Download Image</button>
+<div id="photo">
+    <h1> Hi I am from HTML Web page</h1>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        $('#download').click(function(){
+            var doc = new jsPDF("p", "mm", "a4");
+            html2canvas(document.querySelector('#photo')).then(function(canvas){
+                var imgData = canvas.toDataURL('image/png');
+                console.warn(imgData);
+                // var pageHeight = 295;
+                var imgWidth = (canvas.width * 50) / 210 ;
+                var imgHeight = canvas.height * imgWidth / canvas.width;
+                // var heightLeft = imgHeight;
+                var position = 15;
+                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                // heightLeft -= pageHeight;
+                // while (heightLeft >= 0) {
+                //     position = heightLeft - imgHeight;
+                //     doc.addPage();
+                //     doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                //     heightLeft -= pageHeight;
+                // }
+                doc.output('dataurlnewwindow');
+                doc.save(Date.now() +'.pdf');
+            });
+        });
+    });
+
+
+</script>
+</body>
+</html>
