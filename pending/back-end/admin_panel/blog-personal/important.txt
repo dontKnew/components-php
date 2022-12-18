@@ -1,0 +1,27 @@
+-> generate random token
+	 helper('text');
+        $token = random_string('crypto', 20);
+
+
+Time::now()->format('Y-m-d H:i:s')
+
+ $return = $this->where('expires <=', date('Y-m-d H:i:s'))
+            ->delete();
+
+use join for merge table data
+
+->
+ public function fake(Generator &$faker): Login
+    {
+        return new Login([
+            'ip_address' => $faker->ipv4,
+            'identifier' => 'token: ' . random_string('crypto', 64),
+            'user_id'    => fake(UserModel::class)->id,
+            'date'       => Time::parse('-1 day')->format('Y-m-d H:i:s'),
+            'success'    => true,
+        ]);
+    }
+
+->   return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+
+-> form <?= csrf_field() ?>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg13"
+   version="1.1"
+   fill="none"
+   viewBox="0 0 60 60"
+   height="60"
+   width="60">
+  <metadata
+     id="metadata17">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="g6"
+     clip-path="url(#clip0)">
+    <path
+       id="path2"
+       fill="#FF4064"
+       d="M35.5609 59.6208C51.8408 56.5417 62.5423 40.8481 59.4632 24.5682C56.3841 8.28829 40.6905 -2.41311 24.4106 0.665959C8.13064 3.74503 -2.57069 19.4386 0.508373 35.7185C3.58744 51.9984 19.2809 62.6999 35.5609 59.6208Z" />
+    <path
+       id="path4"
+       fill="white"
+       d="M25.469 42.833L21.0787 19.6998L41.9605 27.7204L25.469 42.833Z" />
+  </g>
+  <defs
+     id="defs11">
+    <clipPath
+       id="clip0">
+      <rect
+         id="rect8"
+         fill="white"
+         height="60"
+         width="60" />
+    </clipPath>
+  </defs>
+</svg>
