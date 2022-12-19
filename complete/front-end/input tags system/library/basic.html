@@ -1,0 +1,13 @@
+<html>
+<script src="https://jsuites.net/v4/jsuites.js"></script>
+<script src="https://jsuites.net/v4/jsuites.webcomponents.js"></script>
+<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+ 
+<jsuites-tags value="Canada,US,UK"></jsuites-tags>
+ 
+<script>
+document.querySelector('jsuites-tags').addEventListener('onblur', function() {
+    console.log('Tags' + this.value);
+});
+</script>
+</html>

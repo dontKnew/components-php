@@ -1,0 +1,17 @@
+<html>
+<script src="https://jsuites.net/v4/jsuites.js"></script>
+<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+ 
+<div id='rating'></div>
+ 
+<script>
+var myRating = jSuites.rating(document.getElementById('rating'), {
+    value: 4,
+    number: 6,
+    tooltip: [ 'Very bad', 'Bad', 'Average', 'Good', 'Excellent'],
+});
+console.warn(myRating.getValue(1));
+</script>
+</html>
+myRating.getValue();	Get the current value <br>
+myRating.setValue(number); Set a new value  @param int newValue - Set a new value <br>

@@ -1,0 +1,25 @@
+<html>
+<script src="https://jsuites.net/v4/jsuites.js"></script>
+<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+ 
+<div id="tags-local"></div>
+ 
+<p><input type='button' onclick='alert(tagsLocal.getValue())' value='Get the values'></p>
+ 
+<script>
+var tagsLocal = jSuites.tags(document.getElementById('tags-local'), {
+    search: [
+        "apple",
+        "watermelon",
+        "orange",
+        "strawberry",
+        "grape",
+        "cherry",
+        "mango",
+        "nectarine",
+        "banana",
+        "pomegranate"
+    ],
+    placeholder: 'Fruits'
+});
+</script>
