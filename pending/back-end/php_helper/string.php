@@ -212,4 +212,12 @@ function latin_to_english($subject) {
 echo replace_spec_char("Ăáàâ");
 /*<script>function Convert(string){ return string.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); } console.log(Convert("Ë À Ì Â Í Ã Î Ä Ï Ç Ò È Ó É Ô Ê Õ Ö ê Ù ë Ú î Û ï Ü ô Ý õ â ")
 const str = "Crème Brul str.normalize('NFD').replace(/[\u0300-\u036f]/g, "") > 'Creme Brulee'</script>*/
+
+function latin_to_normal($string){
+//	$latin_string = 'ĀbcĒfghījklmnŌpqrsŪvwxyz';
+	$latin_string = $string;
+	$normal_string = preg_replace('/[^\x00-\x7F]/', '', Normalizer::normalize($latin_string, Normalizer::FORM_D));
+	return $normal_string;    // output: AbcEfghijklmnOpqrsUvwxyz
+}
 ?>
+
