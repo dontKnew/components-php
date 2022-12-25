@@ -219,5 +219,13 @@ function latin_to_normal($string){
 	$normal_string = preg_replace('/[^\x00-\x7F]/', '', Normalizer::normalize($latin_string, Normalizer::FORM_D));
 	return $normal_string;    // output: AbcEfghijklmnOpqrsUvwxyz
 }
+
+function range_increment($start, $end):array(){
+	$range = [];
+	for ($i = $start; $i <= $end; $i++) {
+	    array_push($range, $i);
+	}
+	return $range;
+}
 ?>
 
