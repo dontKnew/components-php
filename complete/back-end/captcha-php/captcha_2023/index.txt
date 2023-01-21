@@ -1,0 +1,29 @@
+  public function captcha(){
+        $code = bin2hex(random_bytes(4));
+        $image = imagecreatetruecolor(200, 50);
+        $bg_color = imagecolorallocate($image, 255, 255, 255);
+        $text_color = imagecolorallocate($image, 0, 0, 0);
+        imagefill($image, 0, 0, $bg_color);
+        imagestring($image, 5, 50, 15, $code, $text_color);
+        for ($i = 0; $i < 200; $i++) {
+            $x = rand(0, 200);
+            $y = rand(0, 50);
+            imagesetpixel($image, $x, $y, $text_color);
+        }
+        header('Content-Type:image/png');
+        imagepng($image, "frontend/captcha.png");
+        imagedestroy($image);
+        return $code;
+    }
+
+  <div class="row">
+                             <div class="mb-3 col-md-6">
+                                <p class="mb-1">Captcha Image</p>
+                                <img src="<?=base_url()?>/frontend/captcha.png" >
+                                <input type="hidden" name="captcha_text" value="<?=$captcha_text?>">
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <p class="mb-1">Type Captcha</p>
+                                <input type="text" name="captcha" class="form-control" placeholder="Please type captcha text" required>
+                            </div>
+                        </div>

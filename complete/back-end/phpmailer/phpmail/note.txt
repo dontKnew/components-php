@@ -1,0 +1,76 @@
+const form = document.getElementById("contact-us-form");
+        form.addEventListener("submit", e => {
+            alert('submitted');
+            e.preventDefault();
+            const formData = new FormData(form);
+            const searchParams = new URLSearchParams();
+            for (const pair of formData.entries()) {
+                searchParams.append(pair[0], pair[1]);
+            }
+            console.warn(searchParams);
+            fetch("library/mail.php", {
+                method: "POST",
+                body: searchParams
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                document.querySelector("#response_mail").innerHTML = data;
+            })
+            .catch(error => console.error(error));
+        });
+
+<?php
+
+ if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        try {
+        
+        $to = "zramexcourier@gmail.com";
+        $subject = "HTML email";
+        
+         $messageBody = '<table style="width:55%;margin:0 auto;text-align:left;border-collapse:collapse">
+                        <thead>
+                        <tr>
+                        <td colspan="2" style="background-color:#fd7e14;text-align:center;padding:10px;color:white;border:1px solid grey;font-weight:800;font-size:20px">Mauliuniform Enquiry Details </td>
+                        </tr>
+                        <tr style="padding:10px">
+                            <th style="border:1px solid grey;padding:10px">NAME </th>
+                            <td style="border:1px solid grey;padding:10px">'.ucwords(strtolower($_POST['name'])).'</td>
+                        </tr>
+                    
+                        <tr style="padding:10px">
+                            <th style="border:1px solid grey;padding:10px">EMAIL </th>
+                            <td style="border:1px solid grey;padding:10px"><a href="mailto:'.strtolower($_POST['email']).'" target="_blank" title="click to send email">'.strtolower($_POST['email']).'</a></td>
+                        </tr>
+                    
+                        <tr style="padding:10px">
+                            <th style="border:1px solid grey;padding:10px"> PHONE NUMBER </th>
+                            <td style="border:1px solid grey;padding:10px">'.$_POST['phone'].'</td>
+                        </tr>
+                        <tr style="padding:10px">
+                            <th style="border:1px solid grey;padding:10px"> MESSAGE </th>
+                            <td style="border:1px solid grey;padding:10px">'.$_POST['message'].'</td>
+                        </tr>
+                        </thead>
+                    </table>';
+    
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        
+        // More headers
+        $headers .= 'From: <sender@example.com>' . "\r\n";
+        
+        if(mail($to,$subject,$message,$headers)){
+            echo "Thanks for connecting us, We`ll contact you ASAP!";
+        }else {
+            echo "Mail Could not sent, Please try again later";
+        }
+       
+    }catch(Exception $e){
+        echo $e->getMessage();
+    }
+ }else {
+     echo "Invalid Request Method";
+ }
+

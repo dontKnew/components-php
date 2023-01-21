@@ -1,0 +1,7 @@
+{
+    "require": {
+        "kenjis/ci4-attribute-routes": "~0.1.0",
+        "nikic/fast-route": "^1.3",
+        "bramus/router": "~1.6"
+    }
+}
