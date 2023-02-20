@@ -1,0 +1,22 @@
+<?php
+$to = "sajid.globalheight@gmail.com";
+$subject = "Example HTML Email";
+
+// HTML message
+$message = "<html><body>";
+$message .= "<h1>Hello World!</h1>";
+$message .= "<p>This is an example of an HTML email.</p>";
+$message .= "</body></html>";
+
+// To send HTML mail, the Content-type header must be set
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// Additional headers
+$headers .= 'From: sender@example.com' . "\r\n";
+$headers .= 'Cc: cc@example.com' . "\r\n";
+$headers .= 'Bcc: bcc@example.com' . "\r\n";
+
+// Send the email
+mail($to, $subject, $message, $headers);
+?>

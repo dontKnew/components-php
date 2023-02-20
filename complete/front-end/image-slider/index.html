@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link rel="stylesheet" href="cursor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Image Slider</title>
+</head>
+<style>
+    .owl-carousel {
+        width: 100%;
+        height: 500px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .owl-carousel .item {
+        position: relative;
+    }
+
+    .owl-carousel .item img {
+        width: 100%;
+        height: 500px;
+        display: block;
+        object-fit: cover;
+    }
+
+    .slider-text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        text-align: center;
+        color: #fff;
+    }
+
+    .slider-text h2 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    .slider-text p {
+        font-size: 18px;
+    }
+
+
+</style>
+<body>
+
+<div class="owl-carousel owl-theme">
+    <div class="item">
+        <img src="http://localwaste.ae/alltimecargo/images/demo/backgrounds/Banner-1.jpg" alt="Image 1">
+        <div class="slider-text">
+            <h2>Slide 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </div>
+    <div class="item">
+        <img src="http://localwaste.ae/alltimecargo/images/demo/backgrounds/Banner-1.jpg" alt="Image 2">
+        <div class="slider-text">
+            <h2>Slide 2</h2>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+        </div>
+    </div>
+    <div class="item">
+        <img src="http://localwaste.ae/alltimecargo/images/demo/backgrounds/Banner-1.jpg" alt="Image 3">
+        <div class="slider-text">
+            <h2>Slide 3</h2>
+            <p>Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function(){
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:0,
+            nav:false,
+            items:1,
+            autoplayTimeout: 2000,
+            animateOut: 'fadeOut'
+
+        });
+    });
+
+</script>
+</body>
+</html>

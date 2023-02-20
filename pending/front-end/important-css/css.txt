@@ -1,0 +1,1 @@
+background:url('img/interview.jpg') no-repeat center center; background-size:cover

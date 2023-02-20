@@ -1,0 +1,52 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="owl-carousel owl-theme first-slider">
+  <div class="item">
+    <img src="https://cdn.bfldr.com/IL79ZI6C/at/gv6c49c5h9xprqbnqt4f4qkb/how-does-air-freight-work.jpg" alt="Slide 1">
+    <h3>Slide 1</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+  <div class="item">
+    <img src="https://cdn.bfldr.com/IL79ZI6C/at/gv6c49c5h9xprqbnqt4f4qkb/how-does-air-freight-work.jpg" alt="Slide 2">
+    <h3>Slide 2</h3>
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+  </div>
+  <div class="item">
+    <img src="https://cdn.bfldr.com/IL79ZI6C/at/gv6c49c5h9xprqbnqt4f4qkb/how-does-air-freight-work.jpg" alt="Slide 3">
+    <h3>Slide 3</h3>
+    <p>Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+  </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function(){
+$('.first-slider').owlCarousel({
+  loop: true,
+  autoplay: true,
+  autoplayTimeout: 5000,
+  dots: false,
+  nav: true,
+  responsive:{
+    0:{
+      items:1
+    },
+    600:{
+      items:2
+    },
+    1000:{
+      items:3
+    }
+  }
+});
+
+    });
+
+</script>
+</body>
+</html>

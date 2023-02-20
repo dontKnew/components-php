@@ -1,0 +1,8 @@
+=> WHEN USER CLICK ON CHAT
+	1. Required Some Information before we'll live
+	1. Already Sent Message- Enter Your Name
+	2. Next Message - Enter Your Phone No.
+	3. Next Message - Enter Email Id
+	3. Next Message - Purpose For Messsage
+		=> user data will saved on database & get the chat id from db & store in user browser cookies for future
+	4. Thank you Sajid for connecting us, Our Agend will connect within 1-5mints. Please stay active

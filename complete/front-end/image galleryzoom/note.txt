@@ -17,8 +17,6 @@
         
         <!-- Include the Simple Lightbox JavaScript file -->
         <script src="https://cdn.jsdelivr.net/npm/simplelightbox@latest/dist/simple-lightbox.min.js"></script>
-        
-        <!-- Initialize Simple Lightbox on the link -->
         <script>
           var lightbox = new SimpleLightbox('.lightbox');
         </script>

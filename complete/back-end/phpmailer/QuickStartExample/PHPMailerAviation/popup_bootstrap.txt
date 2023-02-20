@@ -1,0 +1,66 @@
+<input type="hidden" class="btn btn-primary quickEnquiry"  id="quickEnquiry" data-toggle="modal" data-target="#exampleModal"> </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content border border-dark" style="background-color:white">    
+          
+        <button aria-hidden="true"  type="button" class="quick-equiry-close" data-dismiss="modal" aria-label="Close">x</button>
+          <div class="modal-body quick-enquiry">
+              <h3 class="text-primary text-center mt-1 quick-enquiry-head"><u>Join Best Course</u></h3>
+                <form id="join_course_form" class="mt-4 mb-2">
+                    <div class="row noti_msg"></div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <select  name="course" class="form-control custom-style-input" required="">
+                                <option value="">Select Course</option>    
+                                <option value="CC">Cabin Crew</option>    
+                                <option value="CPL">Commercial Pilot Licence</option>    
+                                <option value="ATPL">Airline Transport Pilot Licence</option>    
+                                <option value="IP">Interview Preparation</option>    
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" name="name" class="form-control custom-style-input" placeholder="Your Name" required="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="email" name="email" class="form-control custom-style-input" placeholder="Your Email" required="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="number" name="phone" class="form-control custom-style-input" placeholder="Your Phone No." required="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select  name="age_criteria" class="form-control custom-style-input" required="">
+                                <option value="">Select Age Criteria</option>    
+                                <option value="16-20">16-20</option>    
+                                <option value="21-25">21-25</option>    
+                                <option value="26-30">26-30</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select  name="gender" class="form-control custom-style-input" required="">
+                                <option value="">Select Gender</option>    
+                                <option value="Male">Male</option>    
+                                <option value="Female">Female</option>    
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select  name="qualification" class="form-control custom-style-input" required="">
+                                <option value="">Select Qualification</option>    
+                                <option value="12th Passed">12th Passed</option>    
+                                <option value="Graduated">Graduated</option>    
+                                <option value="Post Graduated">Post Graduated</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <textarea  name="message" class="form-control custom-style-input" placeholder="Enter Message(optional)"></textarea>
+                        </div>
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-md btn-primary custom-btn text-center" id="submit_btn">Submit :)</button>
+                        </div>
+                    </div>
+                </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>

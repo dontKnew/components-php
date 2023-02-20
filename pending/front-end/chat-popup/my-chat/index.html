@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="floating-chat-body">
+        <div class="floating-chat enter">
+            <i class="fa fa-comments fa-2x" style="position: relative;bottom:2px" aria-hidden="true"></i>
+        </div>
+        <div class="chatbox-holder enter">
+            <div class="chatbox">
+                <div class="chatbox-top">
+                    <div class="chat-partner-name">
+                        <span>Live Chat</span>
+                        <span class="status online"></span>
+                    </div>
+                    <div class="chatbox-icons">
+                        <a href="javascript:void(0);" title="minimize the chat" style="color:green" ><i class="fa fa-minus"></i></a>
+                        <a href="javascript:void(0);" title="delete whole chat"><i class="fa fa-times"></i></a>
+                    </div>
+                </div>
+
+                <div class="chat-messages">
+
+                    <!--<div class="message-box-holder">
+                        <div class="message-box">
+                            Receiver Test Message
+                        </div>
+                    </div>-->
+                </div>
+                <div class="chat-input-holder">
+                    <input type="text"  id="message" class="chat-input"> </input>
+                    <input type="submit" value="Send" id="send_message" class="message-send cursor-pointer " />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
