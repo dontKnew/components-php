@@ -46,7 +46,7 @@ curl_setopt_array($curl, [
     CURLOPT_CUSTOMREQUEST => "POST",
     CURLOPT_POSTFIELDS => $data1,
     CURLOPT_HTTPHEADER => [
-        "Authorization: Bearer EAAMKFcmN5CsBACZA892FUh6gKXBrxBd90Ai1rvK2kH3DMMyUykUcMfrZAlmeDHJ9nAaPIPRRYFkP80CFpPCSiAZBZAC2t0Gr0xGzKnuaB4OFIsNp2grxSkceYAAtpGbwZAmqXGttJbuWiGavA3n5AsR61bg8ZCP8KjAx8bk0fit5DmMpO7lN3WCe3SW6juh8VJNGIuBaFcUPzVUaiROJnDjNS2dDkj4YoZD",
+        "Authorization: Bearer token",
         "Content-Type: application/json"
     ],
 ]);
