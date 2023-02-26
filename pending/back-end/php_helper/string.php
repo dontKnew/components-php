@@ -227,5 +227,12 @@ function range_increment($start, $end):array(){
 	}
 	return $range;
 }
+
+//clean ASSIC VALUE
+//$str = "<h1>Hello WorldÆØÅ!</h1>"; & return Hello World
+function ($str){
+	$newstr = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+	return $newstr;
+}
 ?>
 

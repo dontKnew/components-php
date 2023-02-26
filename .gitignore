@@ -5,4 +5,5 @@ notes.txt
 vendor
 rapidex_networks
 node_modules
+.env
 

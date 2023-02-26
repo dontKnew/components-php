@@ -47,7 +47,7 @@ try {
         $mail = new Mailer();
         $mail-> smtp = "smtp.gmail.com";
         $mail->fromEmail = "info.airborneacademy@gmail.com";
-        $mail->fromPassword = "lywsurmmhrzueaxx";
+        $mail->fromPassword = "";
         $mail->fromName = "Do Not Reply";
         $mail->toEmail = "info.airborneacademy@gmail.com";
 

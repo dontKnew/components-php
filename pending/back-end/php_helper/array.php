@@ -35,4 +35,15 @@ function single_key_pair(iterable $array, string $id = ''): array {
 /*end function 2*/
 
 
+function uniqueArr($arr){
+	$uniqueArr = [];
+	foreach($arr as $k=>$v){
+                if(!isset($uniqueArr[$k])){
+                    $uniqueArr[$k] = $v;
+                }    
+            }
+	return	$uniqueArr; 
+}
+
+
 ?>

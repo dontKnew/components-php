@@ -96,7 +96,7 @@ try {
         $mail = new Mailer();
         $mail-> smtp = "smtp.gmail.com";
         $mail->fromEmail = "sajid.globalheight@gmail.com";
-        $mail->fromPassword = "hzbagjenqonfkvlb";
+        $mail->fromPassword = "";
         $mail->fromName = "Do Not Reply";
         $mail->toEmail = "mauli27enterprises@gmail.com ";
 

@@ -23,3 +23,36 @@ function humanize($past_time): string
     return $time;
 }
 echo humanize("19-12-2022 12:13:40");
+
+   function currentTime($to_zone){
+        $india_timezone = new DateTimeZone('Asia/Kolkata');
+        $to_zone_timezone = new DateTimeZone($to_zone);
+        
+        $india_time = new DateTime('now', $india_timezone);
+        $india_current_time  = $india_time->format("H:i");
+        
+        $india_time->setTimezone($to_zone_timezone);
+        $to_zone_timezone = $india_time->format('d-m-Y H:i');
+        
+        $response['date'] = $india_time->format('d-M-Y');
+        $response['time'] = $india_time->format('h:i a');
+        
+        return $response;
+
+    }
+
+
+	/*
+	if india time is 10:00 then what is time in dubai(any_country_name)
+		$to_zone_time : "Asia/Dubai"
+		$india_time : "10:00"
+	*/ 
+	function countryTime($to_zone_time, $india_time){
+    		$india_time = new DateTime($india_time, new DateTimeZone('Asia/Kolkata'));
+		 $dubai_timezone = new DateTimeZone($to_zone_time);
+		    $dubai_time = clone $india_time; // clone the object to avoid modifying the original time
+		    $dubai_time->setTimezone($dubai_timezone);
+		    $dubai_time_formatted = $dubai_time->format('H:i');
+		    return $dubai_time_formatted;
+
+	}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Live Stream Example</title>
+	<link href="//vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+	<script src="//vjs.zencdn.net/7.8.3/video.min.js"></script>
+	<style type="text/css">
+		#live {
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		function playLive() {
+			var player = videojs('live');
+			player.src({
+				src: 'http://your-stream-url-here',
+				type: 'application/x-mpegURL'
+			});
+			player.play();
+			document.getElementById('play-btn').style.display = 'none';
+			document.getElementById('stop-btn').style.display = 'inline-block';
+			document.getElementById('live').style.display = 'block';
+		}
+
+		function stopLive() {
+			var player = videojs('live');
+			player.pause();
+			document.getElementById('stop-btn').style.display = 'none';
+			document.getElementById('play-btn').style.display = 'inline-block';
+			document.getElementById('live').style.display = 'none';
+		}
+	</script>
+</head>
+<body>
+	<button id="play-btn" onclick="playLive()">Play</button>
+	<button id="stop-btn" onclick="stopLive()" style="display: none;">Stop</button>
+	<video id="live" class="video-js vjs-default-skin" controls preload="none" width="640" height="360"></video>
+</body>
+</html>
