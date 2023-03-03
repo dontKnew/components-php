@@ -1,3 +1,7 @@
+foreach ($_POST as $key => $value) {
+                    $message .= "<tr><th>" . $key . "</th><td>" . $value . "</td></tr>";
+                }
+
 <?php
 try {
     
