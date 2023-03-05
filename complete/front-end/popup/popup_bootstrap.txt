@@ -64,3 +64,71 @@
         </div>
       </div>
     </div>
+
+
+<style>
+    .quick-enquiry-head, .quick-enquiry-head + p {
+            text-align: center !important;
+            font-weight: bolder !important;
+            margin-bottom: 20px;
+    }
+    .quick-enquiry-head {
+        color: #620f65 !important;
+        font-family: unset;
+        font-weight:700 !important;
+    }
+    div.form-group >  .custom-style-input {
+        box-shadow: inset 1px 1px 2px #ccc;
+        height: 35px;
+        padding: 0 15px;
+        color: #797979;
+        margin-bottom: 0;
+        font-weight:bolder;
+    }
+    .quick-enquiry {
+        padding:.7rem .5rem .4rem .5rem !important;
+        border: 8px solid #620f65;
+        box-shadow: 0px 0px 30px 0px rgb(255 255 255);
+        background-color: rgba( 255, 255, 255, 1.00 );
+        border-radius:5px;
+        
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+    .custom-btn {
+        background-color:#620f65 !important;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    input {
+        border-color: #6706d3!important;
+    }
+    
+    .quick-equiry-close {
+      position: absolute;
+        height: 31px;
+        width: 31px;
+        left: auto;
+        right: -4px;
+        bottom: auto;
+        top: -6px;
+        padding: 0px;
+        color: #ffffff;
+        font-family: Arial;
+        font-weight: 100;
+        font-size: 22px;
+        line-height: 14px;
+        border:2px solid #fff;
+        border-radius: 26px;
+        box-shadow: 0px 0px 15px 1px rgb(2 2 2 / 75%);
+        text-shadow: 0px 0px 0px rgb(0 0 0 / 23%);
+        background-color: #620f65 !important;
+        z-index: 1000;
+    }
+
+</style>
+

@@ -1,0 +1,66 @@
+
+
+<style>
+    .rapidex-info-call{
+            position: fixed;
+    bottom: 57px;
+    right:10px;
+    z-index:100;
+    
+    }
+    .rapidex-info-call > div {
+              width: 283px;
+    border: 2px solid #e2e2e2;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 2px #c3c3c3;
+    margin-top: 8px;
+    padding: 26px 13px;
+    background:white;
+    }
+    .rapidex-info-call > div > a{
+            background: #e0070712;
+    color: red;
+    font-weight: 600;
+    border-radius: 13px;
+    padding: 5px 15px;
+    font-size: 18px;
+    }
+    .rapidex-info-call  > .call-btn {
+        border-radius:40px;
+        background-color:red;
+        padding: 6px;
+    }
+    .rapidex-info-call  > .close-btn {
+            border-radius: 100%;
+    background-color: #101453;
+    color: white;
+    width: 88px;
+    font-size: 32px;
+    height: 82px;
+    position:relative;
+    }
+    .rapidex-info-call  > .call-btn > span {
+        font-size: 21px;
+        font-weight: 600;
+        color: white;
+    }
+  
+    .text-muted {
+        color: #6c757d!important;
+    position: relative;
+        bottom: 12px;
+        font-size: medium;
+    }
+    </style>
+    <div class="rapidex-info-call">
+        <div style="display:none" style="margin-top:-19px">
+            <img src="<?=BASE_URL?>/assets/img/logo.png" width="250" height="100" style=" margin-bottom: 8px;    margin-top: -14px;">
+            <h5> Send Courier or Parcel to USA, UK, UAE, Australia, Canada, Europe etc... <br> <br> Worldwide Express <br> <span style="color:red">At Discount Price</span></h5>
+            <small class="text-muted" style="margin-bottom: 21px;">Call Us Now </small><br>
+            <a href="tel:9910546802"> <i class="fa fa-phone"></i> +91-9910546802</a>
+        </div>
+       <div class="btn call-btn openCallInfo">
+            <span class="openCallInfo"><i class="fa fa-phone"></i>  +91-9910546802</span>
+        </div>
+    </div>
