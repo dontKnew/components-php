@@ -7,12 +7,12 @@ function encryptFile($plaintextFile, $key)
     $iv = openssl_random_pseudo_bytes($ivlen); // Generate a random initialization vector
     $plaintext = file_get_contents($plaintextFile); // Read the plaintext file into a string
     $ciphertext = openssl_encrypt($plaintext, $cipher, $key, OPENSSL_RAW_DATA, $iv); // Encrypt the plaintext
-    $encryptedFile = $plaintextFile. ".test"; // Append any extension to the plaintext file name for the encrypted file
-    file_put_contents("enc_".$encryptedFile, base64_encode($iv . $ciphertext)); // Write the encoded ciphertext and IV to the encrypted file
+    $encryptedFile = $plaintextFile. ".enc"; // Append any extension to the plaintext file name for the encrypted file
+    file_put_contents($encryptedFile, base64_encode($iv . $ciphertext)); // Write the encoded ciphertext and IV to the encrypted file
 }
 
-$key = "phpmaster"; // Replace with your own key
-$plaintextFile = "dump.txt"; // Replace with your own file path
+$key = "iloveindia"; // Replace with your own key
+$plaintextFile = "key.txt"; // Replace with your own file path
 //encryptFile($plaintextFile, $key);
 
 function decryptFile($encryptedFile, $key)
@@ -25,10 +25,10 @@ function decryptFile($encryptedFile, $key)
     $ciphertext = substr($encryptedData, $ivlen); // Extract the ciphertext from the encrypted data
     $plaintext = openssl_decrypt($ciphertext, $cipher, $key, OPENSSL_RAW_DATA, $iv); // Decrypt the ciphertext
     $decryptedFile = substr($encryptedFile, 0, -4); // Remove the .enc suffix from the encrypted file name for the decrypted file
-    file_put_contents("dec_".$decryptedFile, $plaintext); // Write the decrypted plaintext to the decrypted file
+    file_put_contents($decryptedFile, $plaintext); // Write the decrypted plaintext to the decrypted file
 }
 
 
-$key = "phpmaster"; 
-$encryptedFile = "enc_dump.txt.test"; // Replace with the path file to your encrypted file
+$key = "iloveindia"; 
+$encryptedFile = "key.txt.enc"; // Replace with the path file to your encrypted file
 decryptFile($encryptedFile, $key);

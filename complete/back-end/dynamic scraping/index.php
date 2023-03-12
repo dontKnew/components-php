@@ -6,7 +6,7 @@ use Facebook\WebDriver\Remote\RemoteWebDriver;
 
 require_once('vendor/autoload.php');
 
-$host = 'http://localhost:9515';
+$host = 'http://localhost:9515'; // chrome driver port
 $capabilities = DesiredCapabilities::chrome();
 $driver = RemoteWebDriver::create($host, $capabilities);
 $driver->get('https://en.wikipedia.org/wiki/Selenium_(software)');

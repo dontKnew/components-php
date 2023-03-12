@@ -14,3 +14,7 @@
 	3. https://www.campcodes.com/
 => best 404 page
 	1. https://dev.to/stackfindover/35-html-404-page-templates-5bge
+
+
+= choosed Admin Panel
+	i. https://demo.dashboardpack.com/directory-html/

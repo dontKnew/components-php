@@ -1,0 +1,47 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+<form method="post" id="myForm">
+    <button type="submit" class="g-recaptcha"
+            data-sitekey=""
+            data-callback='onSubmit'
+            data-action='submit'>Submit</button>
+</form>
+
+<script>
+    function onSubmit(token) {
+        fetch('verify_human.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `g-recaptcha-response=${token}`
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // process to next request after success user is human
+                    console.log('Success', data);
+                } else {
+                    // process to next request after failed user is not human
+                    console.error('Server Side Erorr', data);
+                }
+            })
+            .catch(error => {
+                console.error('Client Side Error', error);
+            });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<?php
+require_once 'vendor/autoload.php';
+try {
+	$client = new GuzzleHttp\Client();
+$search_term = 'car'; // Change this to your desired search term
+$url = 'https://api.flaticon.com/v2/search/icons?q=' . $search_term . '&type=icon&vector=true&premium=false&orderby=4';
+$response = $client->get($url);
+if ($response->getStatusCode() === 200) {
+    $response_body = $response->getBody()->getContents();
+    // Parse the JSON response to get the search results
+	echo $response_body ;
+	exit;
+    $search_results = json_decode($response_body, true);
+
+} else {
+    // Handle the error
+}
+
+exit;
+foreach ($search_results['data'] as $result) {
+    // Get the download URL for the SVG version of the icon
+    $download_url = $result['images']['svg']['url'];
+    // Send an HTTP GET request to download the icon
+    $icon_response = $client->get($download_url);
+    // Save the icon to a file
+    file_put_contents($result['id'] . '.svg', $icon_response->getBody()->getContents());
+}
+
+}catch(Exception $e){
+	echo $e->getMessage();
+}

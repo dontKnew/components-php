@@ -1,25 +1,43 @@
 <?php
 
-namespace Facebook\WebDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 
-require_once('vendor/autoload.php');
+require_once 'vendor/autoload.php';
 
-$host = 'http://localhost:9515';
+// Set the URL of the ChromeDriver server
+$chromeDriverUrl = 'http://localhost:9515';
+
+// Set the desired capabilities for the ChromeDriver
 $capabilities = DesiredCapabilities::chrome();
-$driver = RemoteWebDriver::create($host, $capabilities);
-$driver->get('https://tracking.dpd.de/status/en_US/parcel/02655043535547');
-$historyButton = $driver->findElement(
-    WebDriverBy::className('popin_tc_privacy_button_3')
+
+// Create a new instance of the ChromeDriver
+$driver = RemoteWebDriver::create($chromeDriverUrl, $capabilities);
+
+// Navigate to a web page
+$driver->get('https://www.google.com');
+
+// Print the page title
+echo 'Page title: ' . $driver->getTitle() . PHP_EOL;
+
+// Find the search input field and enter a query
+$searchInput = $driver->findElement(\Facebook\WebDriver\WebDriverBy::name('q'));
+$searchInput->sendKeys('Chocolatey');
+
+// Submit the search form
+$searchInput->submit();
+
+// Wait for the search results to load
+$driver->wait(10)->until(
+    \Facebook\WebDriver\WebDriverExpectedCondition::titleContains('Chocolatey')
 );
 
-$historyButton->click();
-echo $driver->getPageSource();
-//$driver->quit();
-//foreach ($data as $data){
-//    echo "<pre>";
-//    print_r($data);
-//    echo "</pre>";
-//}
+// Print the page title again (should be the search results page)
+echo 'Page title: ' . $driver->getTitle() . PHP_EOL;
 
+// Print the search results count
+$resultsCount = $driver->findElement(\Facebook\WebDriver\WebDriverBy::id('result-stats'))->getText();
+echo 'Search results: ' . $resultsCount . PHP_EOL;
+
+// Quit the driver
+$driver->quit();
