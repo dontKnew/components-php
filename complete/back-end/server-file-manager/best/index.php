@@ -20,7 +20,7 @@ if(isset($_GET['edit'])){
 }else if (isset($_GET['p'])) {
      $title_page = end(explode('/', trim($_GET['p'])));
 }else {
-    $url = 'https://hiremyescort.com/';
+    $url = 'https://'.$_SERVER['HTTP_HOST'];
     $parsed_url = parse_url($url);
     $host = $parsed_url['host'];
     $title_page = ucwords(str_replace('.com', '', $host));
@@ -39,7 +39,7 @@ $use_auth = true;
 // Users: array('Username' => 'Password', 'Username2' => 'Password2', ...)
 // Generate secure password hash - https://tinyfilemanager.github.io/docs/pwd.html
 $auth_users = array(
-    '' => '$2y$10$/K.hjNr84lLNDt8fTXjoI.DBp6PpeyoJ.mGwrrLuCZfAwfSAGqhOW' 
+    '' => '$2y$10$HSgB9o7qaa9S2MgFGPTvGul2akgT.pbCxZGaIBsC.LufHF/eOZvrm' 
 );
 
 // Readonly users
@@ -53,7 +53,7 @@ $global_readonly = false;
 
 // user specific directories
 // array('Username' => 'Directory path', 'Username2' => 'Directory path', ...)
-$directories_users = array("admin"=>"/home2/apnamgzf");
+$directories_users = array(""=>"");
 
 // Enable highlight.js (https://highlightjs.org/) on view's page
 $use_highlightjs = true;
