@@ -1,0 +1,30 @@
+$('#finalSubmitEF').submit((e) => { // form id name
+    e.preventDefault();
+    grecaptcha.ready(function() {
+        grecaptcha.execute('sit key', {action: 'finalSubmitEF'}).then(function(token) {
+            const url = "<?=BASE_URL?>/verify_human.php";
+            const formData = new FormData($('#finalSubmitEF')[0]);
+            formData.append('g-recaptcha-response', token);
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response, status) {
+                    if(status === "success") {
+                        let data = JSON.parse(response);
+                    } else {
+                        alert("Something went wrong.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                    alert("Something went wrong. Please try again later.");
+                }
+            });  
+        });
+    });
+});
+<input type="submit" name="ConsigneeSubmit" value="Confirm Pickup" class="btn  btn-danger">
+<script src="https://www.google.com/recaptcha/api.js?render=site key"></script>
