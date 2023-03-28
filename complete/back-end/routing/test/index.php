@@ -15,5 +15,7 @@ $router->get('home', function(Request $request, Response $response) {
     # OR
     # return 'Hello World!';
 });
-
+$router->notFound(function(Request $request, Response $response) {
+  // your codes.
+});
 $router->run();
