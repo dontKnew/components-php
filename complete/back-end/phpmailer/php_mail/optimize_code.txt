@@ -27,29 +27,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Invalid Request Method";
 }
 
-// Function to generate the email message
-function generateEmailMessage($formData) {
-    return '<table style="width:55%;margin:0 auto;text-align:left;border-collapse:collapse">
-                <thead>
+ private function getMessage(){
+        $message = '
+            <table style="width:55%;margin:0 auto;text-align:left;border-collapse:collapse">
+                <thead>  
                     <tr>
-                        <td colspan="2" style="background-color:#fd7e14;text-align:center;padding:10px;color:white;border:1px solid grey;font-weight:800;font-size:20px"> Customer Enquiry Details </td>
-                    </tr>
+                        <td colspan="2" style="background-color:#fd7e14;text-align:center;padding:10px;color:white;border:1px solid grey;font-weight:800;font-size:20px"> Customer Enquiry Info :- </td>
+                    </tr>';
+        foreach($this->request->getVar() as $k=>$data){
+            $message .= '
                     <tr style="padding:10px">
-                        <th style="border:1px solid grey;padding:10px">NAME </th>
-                        <td style="border:1px solid grey;padding:10px">' . ucwords(strtolower($formData['name'])) . '</td>
-                    </tr>
-                    <tr style="padding:10px">
-                        <th style="border:1px solid grey;padding:10px">EMAIL </th>
-                        <td style="border:1px solid grey;padding:10px"><a href="mailto:' . strtolower($formData['email']) . '" target="_blank" title="click to send email">' . strtolower($formData['email']) . '</a></td>
-                    </tr>
-                    <tr style="padding:10px">
-                        <th style="border:1px solid grey;padding:10px"> PHONE NUMBER </th>
-                        <td style="border:1px solid grey;padding:10px">' . $formData['phone'] . '</td>
-                    </tr>
-                    <tr style="padding:10px">
-                        <th style="border:1px solid grey;padding:10px"> MESSAGE </th>
-                        <td style="border:1px solid grey;padding:10px">' . $formData['message'] . '</td>
-                    </tr>
-                </thead>
-            </table>';
-}
+                        <th style="border:1px solid grey;padding:10px">' . strtoupper($k) . '</th>
+                        <td style="border:1px solid grey;padding:10px">' . ucwords(strtolower($data['name'])) . '</td>
+                    </tr>';
+        }
+        $message .= '
+            </thead>
+        </table>';
+    
+        return $message;
+    }
