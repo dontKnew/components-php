@@ -1,5 +1,6 @@
 const form = document.getElementById("contact-us-form");
         form.addEventListener("submit", e => {
+            document.querySelector("#submitBtn").innerHTML = "Please Wait!";
             alert('submitted');
             e.preventDefault();
             const formData = new FormData(form);
@@ -14,8 +15,9 @@ const form = document.getElementById("contact-us-form");
             })
             .then(response => response.text())
             .then(data => {
-                console.log(data);
+                form.reset();
                 document.querySelector("#response_mail").innerHTML = data;
+                document.querySelector("#submitBtn").innerHTML = "Submit";
             })
             .catch(error => console.error(error));
         });
