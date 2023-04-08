@@ -2,17 +2,12 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $to = "sajid.globalheight@gmail.com";
-        $subject = "Ars Webtech Form";
-
-        // Generate email message
-        $message = generateEmailMessage($_POST);
-
-        // Set email headers
+        $subject = "SGHMS Enquiry Form";
+        $message = getMessage();
+        
         $headers = "MIME-Version: 1.0\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8\r\n";
         $headers .= 'From: <sender@example.com>' . "\r\n";
-
-        // Send email
         if (mail($to, $subject, $message, $headers)) {
             echo "<script>alert('Thanks for connecting us, we will contact you ASAP!'); window.location.href='../';</script>";
         } else {
@@ -27,18 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Invalid Request Method";
 }
 
- private function getMessage(){
+  function getMessage(){
         $message = '
             <table style="width:55%;margin:0 auto;text-align:left;border-collapse:collapse">
                 <thead>  
                     <tr>
                         <td colspan="2" style="background-color:#fd7e14;text-align:center;padding:10px;color:white;border:1px solid grey;font-weight:800;font-size:20px"> Customer Enquiry Info :- </td>
                     </tr>';
-        foreach($this->request->getVar() as $k=>$data){
+        foreach($_POST as $k=>$data){
             $message .= '
                     <tr style="padding:10px">
                         <th style="border:1px solid grey;padding:10px">' . strtoupper($k) . '</th>
-                        <td style="border:1px solid grey;padding:10px">' . ucwords(strtolower($data['name'])) . '</td>
+                        <td style="border:1px solid grey;padding:10px">' . ucwords(strtolower($data)) . '</td>
                     </tr>';
         }
         $message .= '
