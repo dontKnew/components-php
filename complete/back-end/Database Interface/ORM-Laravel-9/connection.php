@@ -12,10 +12,10 @@ use Illuminate\Database\Eloquent\Model;
 $capsule = new Capsule;
 $capsule->addConnection([
     'driver'    => 'mysql',
-    'host'      => '162.241.119.108',
-    'database'  => 'apnamgzf_hiremyescort',
-    'username'  => 'apnamgzf_test',
-    'password'  => 'F)Xre9RQtVSt',
+    'host'      => 'localhost',
+    'database'  => '',
+    'username'  => '',
+    'password'  => '',
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
@@ -30,7 +30,12 @@ class User extends Model
 }
 
 
+
 $user = User::all();
 foreach($user  as $k){
 	echo $k->email. "<br>";
 }
+
+/*echo "<pre>";
+print_r($data[0]->created_at);
+echo "</pre>";*/

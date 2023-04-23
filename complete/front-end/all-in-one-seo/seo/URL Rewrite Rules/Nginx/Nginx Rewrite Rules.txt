@@ -1,0 +1,29 @@
+
+1. It is only "Nginx" web server users.
+
+2. Add below code into your Nginx configuration file.
+
+
+location / {
+ if (!-e $request_filename) {
+   rewrite  ^/admin/(.*)$  /admin/index.php?route=$1  last;
+   rewrite  ^/(.*)$  /index.php?route=$1  last;
+   break;
+ }
+}
+
+location ~ \.(inc|sql|bak|dat|ini|tdata|sdata|addonpk)$ { 
+    deny all; 
+}
+
+location = /admin/db-backups {
+    deny all;
+}
+
+location = /admin/addons {
+    deny all;
+}
+
+location = /uploads/temp {
+    deny all;
+}

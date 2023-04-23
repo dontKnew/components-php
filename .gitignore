@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 javafx-sdk-17.0.6
+=======
+>>>>>>> a30b4a2b3916c37f6eaf12e5a3b93de40a669d99
 key.json
 notes.txt
 *.zip
@@ -7,9 +10,13 @@ vendor
 rapidex_networks
 node_modules
 .env
+<<<<<<< HEAD
 *.mp4
 *.mp3
 *.exe
 *.dl
 *.exe
 check_script
+=======
+
+>>>>>>> a30b4a2b3916c37f6eaf12e5a3b93de40a669d99

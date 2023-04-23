@@ -1,0 +1,9 @@
+Change the  format of a video/audio file
+Extract audio from video file
+Merge audio and video streams
+Change the bitrate of a video/audio file
+Create GIF from a video file
+Extract still images from a video file
+To embed subtitles into a video file
+To compress or resize a video/audio file
+Record a live stream

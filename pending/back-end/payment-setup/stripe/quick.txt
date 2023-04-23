@@ -1,4 +1,7 @@
+
 // "stripe/stripe-php": "8.0"
+
+
 
  $stripe = new Stripe($this->payment_key);
         
@@ -18,11 +21,11 @@
 => thank you page
    
         if(session()->has("checkout_session")){
-            
         $stripe = new Stripe($this->payment_key);
         $checkout_session = session()->get("checkout_session");
         $session = $stripe->checkout->sessions->retrieve($checkout_session);
         $response = $stripe->invoices->sendInvoice($session->invoice);
+
 	if($reponse->status==paid){
 		echo"completed";
 	}

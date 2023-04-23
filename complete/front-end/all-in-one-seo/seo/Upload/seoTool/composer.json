@@ -1,0 +1,5 @@
+{
+    "require": {
+        "pedroborges/meta-tags": "^0.0.2"
+    }
+}

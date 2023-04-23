@@ -1,0 +1,5 @@
+{
+    "require": {
+        "coinbase/coinbase-commerce": "^1.0"
+    }
+}
