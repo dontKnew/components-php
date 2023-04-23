@@ -82,7 +82,7 @@ header("location:rack.php?msg=Deleted");
 </div>
 <!--close-Header-part--> 
 <!--top-Header-menu-->
-<? include "menu.php"; ?>
+<?php include "menu.php"; ?>
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current"  style="text-transform: capitalize;">rack</a> </div>
@@ -92,7 +92,7 @@ header("location:rack.php?msg=Deleted");
              
     <hr>
     <div class="row-fluid">
-      <? if($_GET['action']=="Add"){ ?>
+      <?php if($_GET['action']=="Add"){ ?>
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
           <h5>rack</h5>
@@ -122,8 +122,8 @@ header("location:rack.php?msg=Deleted");
           </form>
         </div>
       </div>
-    <? } ?>
-      <? if($_GET['action']=="edit"){ 
+    <?php } ?>
+      <?php if($_GET['action']=="edit"){
   $s1="select * from rack where id ='$_GET[id]'";
   $rs1=mysqli_query($con,$s1);
   $r1=mysqli_fetch_array($rs1);
@@ -140,7 +140,7 @@ header("location:rack.php?msg=Deleted");
             <div class="control-group">
               <label class="control-label">Name :</label>
               <div class="controls">
-                <input type="text" class="span11" placeholder="name" name="name" value="<? echo $r1['name']; ?>">
+                <input type="text" class="span11" placeholder="name" name="name" value="<?php echo $r1['name']; ?>">
               </div>
             </div>
              
@@ -148,7 +148,7 @@ header("location:rack.php?msg=Deleted");
          
           
        
-            <div class="form-actions">  <input type="hidden" name="id" value="<? echo $r1['id']; ?>">
+            <div class="form-actions">  <input type="hidden" name="id" value="<?php echo $r1['id']; ?>">
         
           <input type="submit" value="Update" name="Update" class="btn btn-success">
               
@@ -156,7 +156,7 @@ header("location:rack.php?msg=Deleted");
           </form>
         </div>
       </div>
-    <? } ?>
+    <?php } ?>
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5 style="text-transform: capitalize;">Package list</h5>
@@ -165,7 +165,7 @@ header("location:rack.php?msg=Deleted");
 
 
 
-<? $sqlr=mysqli_query($con, "select * from rack");
+<?php $sqlr=mysqli_query($con, "select * from rack");
 while($rowr=mysqli_fetch_array($sqlr)){
  if (strpos($rowr['name'], 'A') !== false) { 
     $color="030cb0";
@@ -177,8 +177,8 @@ while($rowr=mysqli_fetch_array($sqlr)){
     $color="5e015f";
 }
  ?>
-<a href="#" class="label label-important" style="background-color: #<? echo $color; ?>"><? echo $rowr['name']; ?></a> 
-<? } ?>
+<a href="#" class="label label-important" style="background-color: #<?php echo $color; ?>"><?php echo $rowr['name']; ?></a>
+<?php } ?>
 
 
             <form name="form1" method="post" action="">
