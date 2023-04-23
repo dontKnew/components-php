@@ -1,0 +1,95 @@
+1. keys
+    prod: 
+    test : 
+
+2. Docs
+    https://stripe.com/docs/api - need to learn for advanced level
+    https://stripe.com/docs/payments/quickstart - quick start
+
+3. Testing Resources :
+    4242424242424242	Succeeds and immediately processes the payment.
+    4000000000003220	Complete 3D Secure 2 authentication for a successful payment.
+    4000000000009995	Always fails with a decline code of insufficient_funds.
+
+
+4. DOCS
+	Response after checkout session created 
+	{
+  "id": "cs_test_a1oC2sllcS5l6sPTzEH846L8xTtQcF81zQ0S3uEyhnMezlnB6ENUrIXDvW",
+  "object": "checkout.session",
+  "after_expiration": null,
+  "allow_promotion_codes": null,
+  "amount_subtotal": 80000,
+  "amount_total": 80000,
+  "automatic_tax": {
+    "enabled": false,
+    "status": null
+  },
+  "billing_address_collection": "required",
+  "cancel_url": "https://scholaracad.com/order-summary",
+  "client_reference_id": null,
+  "consent": null,
+  "consent_collection": null,
+  "created": 1676569244,
+  "currency": "inr",
+  "custom_fields": [],
+  "custom_text": {
+    "shipping_address": null,
+    "submit": null
+  },
+  "customer": null,
+  "customer_creation": "if_required",
+  "customer_details": {
+    "address": null,
+    "email": "sajid.globalheight@gmail.com",
+    "name": null,
+    "phone": null,
+    "tax_exempt": "none",
+    "tax_ids": null
+  },
+  "customer_email": "sajid.globalheight@gmail.com",
+  "expires_at": 1676655643,
+  "invoice": null,
+  "invoice_creation": {
+    "enabled": true,
+    "invoice_data": {
+      "account_tax_ids": null,
+      "custom_fields": null,
+      "description": null,
+      "footer": null,
+      "metadata": {},
+      "rendering_options": null
+    }
+  },
+  "livemode": false,
+  "locale": null,
+  "metadata": {},
+  "mode": "payment",
+  "payment_intent": null,
+  "payment_link": null,
+  "payment_method_collection": "always",
+  "payment_method_options": {},
+  "payment_method_types": [
+    "card"
+  ],
+  "payment_status": "unpaid",
+  "phone_number_collection": {
+    "enabled": false
+  },
+  "recovered_from": null,
+  "setup_intent": null,
+  "shipping_address_collection": null,
+  "shipping_cost": null,
+  "shipping_details": null,
+  "shipping_options": [],
+  "status": "open",
+  "submit_type": null,
+  "subscription": null,
+  "success_url": "https://scholaracad.com/thank-you",
+  "total_details": {
+    "amount_discount": 0,
+    "amount_shipping": 0,
+    "amount_tax": 0
+  },
+  "url": "https://checkout.stripe.com/c/pay/cs_test_a1oC2sllcS5l6sPTzEH846L8xTtQcF81zQ0S3uEyhnMezlnB6ENUrIXDvW#fidkdWxOYHwnPyd1blpxYHZxWjA0SFxyXU5WRHdUaEJSMmwyX2JBMnVybzJjNUlUaH1jPE9JMl1WU31WTlZwUEZGajZzNENmPDBkQ2t%2Fdl0xSlFKY2lgYE5KX1ZgdDRjXFFQdkEyVm5ITUtVNTU2RkdCSGY1dycpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYCkndXdgaWpkYUNqa3EnPydRbHFsaWlscGglUmBnJ3gl"
+}

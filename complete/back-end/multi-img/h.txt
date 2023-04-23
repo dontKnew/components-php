@@ -1,0 +1,51 @@
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add-gal-img"])) {
+    
+    // Ensure the required form fields are set
+    if (isset($_POST["txtCat"]) && isset($_POST["txtStatus"])) {
+        
+        // Sanitize the form inputs
+        $imgCat = clear_input($_POST["txtCat"]);
+        $imgSts = clear_input($_POST["txtStatus"]);
+        
+        // Loop through each uploaded file
+        foreach ($_FILES["file"]["tmp_name"] as $key => $tmp_name) {
+            
+            // Check if the file was uploaded successfully
+            if ($_FILES["file"]["error"][$key] == UPLOAD_ERR_OK) {
+                
+                // Get file details
+                $namefile = basename($_FILES["file"]["name"][$key]);
+                $ext = pathinfo($namefile, PATHINFO_EXTENSION);
+                
+                // Generate a unique file name
+                $new_name = preg_replace("/[^a-zA-Z0-9]+/", "-", $namefile);
+                $new_name = pathinfo($new_name, PATHINFO_FILENAME) . "_" . time() . "." . $ext;
+                
+                // Move the uploaded file to the gallery directory
+                $query = "SELECT * FROM `dh_portfolio_cat` WHERE `port_id`='$imgCat'";
+                $res = mysqli_query($connection, $query);
+                
+                if ($row = mysqli_fetch_assoc($res)) {
+                    $directory = "../img/gallery/" . $row["directory"] . "/";
+                    $fileUpload = move_uploaded_file($tmp_name, $directory . $new_name);
+                }
+                
+                // Insert the image details into the database
+                $proquery = "INSERT INTO `mbma_portfolio_images` (`port_img_cat`, `port_img_images`, `port_img_status`, `port_img_posted`) 
+                             VALUES ('$imgCat', '$new_name', '$imgSts', NOW())";
+                
+                if (!mysqli_query($connection, $proquery)) {
+                    echo "<script>alert('Something went wrong. Please try again.'); window.location='gallery-images-list.php';</script>";
+                    exit();
+                }
+            }
+        }
+        
+        // Redirect to the gallery image list page if successful
+        echo "<script>alert('Images added successfully.'); window.location='gallery-images-list.php';</script>";
+        exit();
+    } else {
+        echo "<script>alert('Invalid form data.'); window.location='gallery-images-list.php';</script>";
+        exit();
+    }
+}

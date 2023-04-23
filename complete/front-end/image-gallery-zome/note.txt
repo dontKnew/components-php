@@ -1,0 +1,25 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1> hello </h1>
+        <!-- Include the Simple Lightbox CSS file -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplelightbox@latest/dist/simplelightbox.min.css">
+        
+        <!-- Create a link to the image you want to display in the lightbox -->
+        <a href="http://localwaste.ae/decormenia/images/portfolio/design-gallery.jpg" class="lightbox">
+          <img src="http://localwaste.ae/decormenia/images/portfolio/design-gallery.jpg" alt="Image">
+        </a>
+        <a href="http://localwaste.ae/decormenia/images/portfolio/constructions-gallery.jpg" class="lightbox">
+          <img src="http://localwaste.ae/decormenia/images/portfolio/constructions-gallery.jpg" alt="Image">
+        </a>
+        
+        
+        <!-- Include the Simple Lightbox JavaScript file -->
+        <script src="https://cdn.jsdelivr.net/npm/simplelightbox@latest/dist/simple-lightbox.min.js"></script>
+        <script>
+          var lightbox = new SimpleLightbox('.lightbox');
+        </script>
+
+    </body>
+</html>

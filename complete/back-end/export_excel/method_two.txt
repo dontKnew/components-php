@@ -1,0 +1,37 @@
+if(isset($_GET['excel'])){
+            $v = 1;
+            $export_data = [];
+            foreach($tableArr as $i=>$ip){
+                if($v==1){
+                    $export_data[$i] = array();
+                    foreach($ip as $k=>$ipv){
+                        $export_data[$i] = array("Date", "Particular", "Debit", "Credit", "Balance", "Remarks") ;
+                    }
+                }else {
+                    $export_data[$i] = array(
+                        date("d M Y", strtotime($ip['date'])),
+                        $ip['particular'],
+                        $ip["debit"],
+                        $ip["credit"],
+                        $ip["balance"],
+                        $ip["remark"] );
+                }
+                $v++;
+            }
+            // $this->display($export_data);
+            $this->exportExcel($export_data, "mauli_account_".date("d-m-Y"));
+            return redirect(base_url('admin/mauli-account'), 'refresh');
+
+
+   private function exportExcel($data, $filename){
+        header("Content-Disposition: attachment; filename=\"".$filename.".csv\"");
+
+        header("Content-Type: text/csv;");
+        header("Pragma: no-cache");
+        header("Expires: 0");
+        $out = fopen("php://output", 'w');
+        foreach ($data as $row) {
+            fputcsv($out, $row);
+        }
+        fclose($out);
+    }

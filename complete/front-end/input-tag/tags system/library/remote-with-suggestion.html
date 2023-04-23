@@ -1,0 +1,22 @@
+<html>
+<script src="https://jsuites.net/v4/jsuites.js"></script>
+<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+ 
+<div id="tags"></div>
+ 
+<p><input type='button' onclick='alert(tags.getValue())' value='Get the values'></p>
+
+<script>
+var tags = jSuites.tags(document.getElementById('tags'), {
+    search: 'http://localhost:1111/data.json?id=',
+    placeholder: 'To'
+});
+
+</script>
+
+/* 
+Note : get the response as json formate and thats key = text and value = value
+Example : data.json 
+if you change text name in josn file response will not get oK and same as value
+*/
+</html>

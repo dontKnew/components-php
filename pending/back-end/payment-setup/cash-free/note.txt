@@ -1,0 +1,12 @@
+(Folder Pre-Built Checkout)
+1. Create Order & get the payment session id
+2. Then use the Cashfree's JS SDK 2.0.0 to redirect pre-built checkout
+
+(Folder- Drop Checkout)
+2.2. Else you can use checkout custom design
+
+3. after proceed the payment, then automatically redirect to return url(checkstatus.php) as you defined while creating order
+
+Learn More : https://test.cashfree.com/pgappsdemos/nextgen.php#item-2-2
+s
+Note : Business Name & Logo can be edit from cashfree account whereas name logo ok

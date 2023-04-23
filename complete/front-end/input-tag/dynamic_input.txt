@@ -1,0 +1,47 @@
+  <div class="form-group col-md-12">
+                                                <table>
+                                                    <thead>
+                                                    <th>Sr.No.</th>
+                                                    <th>Near Location</th>
+                                                    </thead>
+                                                    <tbody class="addfield">
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" size="2" value="0" placeholder=""  class="form-control" >
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" id="item_name_0" data-id="0" name="location[item_name_0]" placeholder=""  class="form-control col-12" autocomplete="off"  >
+                                                            </td>
+                                                        </tr>
+                                                    <tbody>
+                                                </table>
+                                            <input type="hidden" name="product_details[total_line]" value=0  class="form-control" id="total_line">
+                                            <div class="add-nested-fields-container" style="margin:1px;"> <a class="btn btn-primary btn-sm add_fields">Add Item</a> </div>
+                                        </div>
+
+
+<script>
+     $(function(){
+            let current_line = parseInt($('#total_line').val());
+            let x1 = current_line+1;
+            $(document).on("click", ".add_fields", function () {
+                let form1 = "";
+                form1 +=    '<tr class="nested-fields">';
+                form1 += '</td> <td> <input type="text" size="2" data-id="'+x1+'" value="'+x1+'" class="form-control" > </td>';
+                form1 += '</td> <td> <div class="autocomplete"> <input type="text" id="item_name_'+x1+'" name="location[location_'+x1+']" data-id="'+x1+'" class="form-control"> </td></div>';
+                form1 +=' <td> <span class="remove-link-td clickable col-sm-1" valign="top"> <a tabindex="-1" class="btn remove_fields existing" style="color: #dc3545;" href="javascript:void"><i class="fa fa-times"></i> </a></span> </td> </tr>';
+                let current_line = x1;
+                $('#total_line').val(x1);
+                $('.addfield').append(form1);
+                x1++;
+            });
+
+            $(document).on('click', '.remove_fields', function () {
+                 x1--;
+                $('#total_line').val(x1-1);
+                if(current_line >= 0){
+                    $(this).closest('tr').remove();
+                }
+            });
+     });
+</script>

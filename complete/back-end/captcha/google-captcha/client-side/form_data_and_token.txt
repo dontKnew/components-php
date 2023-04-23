@@ -1,0 +1,31 @@
+function ShipperSubmitEF(token) {
+  const url = "<?=BASE_URL?>/include/api/charge.php?mode=ShipperSubmitEF&token="+token;
+  const formData = new FormData($('#ShipperSubmitEF')[0]);
+  formData.append('g-recaptcha-response', token);
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function(response) {
+      const data = JSON.parse(response);
+      if (data.status == 200) {
+        $("#collapse").addClass("hide");
+        $("#collapse").removeClass("show");
+        $("#collapse2").addClass("show");
+        $(".bg-toggle-first").attr("id", "shipper_tab");
+        $('.bg-toggle-first').css({'background-color': 'green'});
+        $('.bg-toggle-first-text').css({'color': 'white', 'cursor': 'pointer'});
+      } else {
+        alert(data.Error);
+        console.warn("Error: " + response);
+      }
+    },
+    error: function(xhr, status, error) {
+      console.log(xhr.responseText);
+      alert("Something went wrong. Please try again later.");
+    }
+  });
+}

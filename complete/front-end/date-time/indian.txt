@@ -1,0 +1,2 @@
+<label for="datetime">Select date and time:</label>
+<input type="datetime-local" id="datetime" name="datetime" timezone="Asia/Kolkata">

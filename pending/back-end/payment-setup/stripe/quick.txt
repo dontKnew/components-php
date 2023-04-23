@@ -1,0 +1,29 @@
+// "stripe/stripe-php": "8.0"
+
+ $stripe = new Stripe($this->payment_key);
+        
+       $checkout_session = $stripe->checkout->sessions->create([
+            'line_items' => $line_items,
+            'billing_address_collection' => 'required',
+            'invoice_creation' => ['enabled' => true],
+            'customer_email' => session()->get("user_email"),
+            'mode' => 'payment',
+            'success_url' => base_url("thank-you"),
+            'cancel_url' => base_url("order-summary")
+        ]);
+        session()->set(array("checkout_session"=>$checkout_session->id, "checkout_user_id"=>$checkout_user_id, "checkout_amount"=>$schedule_data["amount"]['total_course_fees']) );
+        header("HTTP/1.1 303 See Other");
+        header("Location: ".$checkout_session->url);
+
+=> thank you page
+   
+        if(session()->has("checkout_session")){
+            
+        $stripe = new Stripe($this->payment_key);
+        $checkout_session = session()->get("checkout_session");
+        $session = $stripe->checkout->sessions->retrieve($checkout_session);
+        $response = $stripe->invoices->sendInvoice($session->invoice);
+	if($reponse->status==paid){
+		echo"completed";
+	}
+}

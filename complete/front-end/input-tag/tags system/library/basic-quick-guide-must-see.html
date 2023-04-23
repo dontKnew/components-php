@@ -1,0 +1,24 @@
+<html>
+<script src="https://jsuites.net/v4/jsuites.js"></script>
+<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+ 
+<div id="tags"></div>
+ 
+<script>
+var tags = jSuites.tags(document.getElementById('tags'), {
+    onchange: function() {
+	console.warn(arguments) // list of all arguments
+        console.log(tags.getData());
+    }
+});
+</script>
+</html>
+
+tags.getData();	Get all tags as a object <br>
+
+tags.getValue(number)	Get a specific tag by index or all tags value @param integer indexNumber - Null for all tags <br>
+
+tags.setValue(string);	Set a new value for the javascript tagging @param string newValue - Values separate by comma <br>
+
+tags.reset();	Clear all tags <br>
+tags.isValid();	Validate tags <br>

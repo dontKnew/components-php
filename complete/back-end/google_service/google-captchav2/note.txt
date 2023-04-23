@@ -1,0 +1,2 @@
+1. get secrete key and site key from https://www.google.com/u/1/recaptcha/admin/create
+2. secrete key used for server side verification

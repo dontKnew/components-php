@@ -1,0 +1,27 @@
+  public function index()
+    {
+        $this->response->setContentType('text/plain');
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $to = "sajid.globalheight@gmail.com";
+                $subject = "Tesla Property Enquiry Form";
+                $message = $this->generateMessage($this->request->getVar());
+                $headers = "MIME-Version: 1.0\r\n";
+                $headers .= "Content-type:text/html;charset=UTF-8\r\n";
+                $headers .= 'From: <sender@example.com>' . "\r\n";
+                if (mail($to, $subject, $message, $headers)) {
+                    $this->response->setBody("200");
+                    return $this->response;
+                } else {
+                    $this->response->setBody("500");
+                }
+            } catch (Exception $e) {
+                
+                $this->response->setBody($e->getMessage());
+            }
+        } else {
+            $this->response->setBody("400");
+        }
+        return $this->response;
+    }

@@ -1,0 +1,15 @@
+ $(document).on("input", "#paid_amount, #total_amount", function() {
+          let paid = parseFloat($("#paid_amount").val());
+          let amount = parseFloat($("#total_amount").val());
+        
+          if (!isNaN(paid) && !isNaN(amount)) {
+            if (amount > paid) {
+              let balance = (amount - paid).toFixed(2);
+              $("#balance_amount").val(balance);
+            } else {
+              $("#balance_amount").val("0.00");
+            }
+          } else {
+            $("#balance_amount").val("");
+          }
+    });

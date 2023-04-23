@@ -1,0 +1,28 @@
+<div class="form-group col-md-4">
+    <label>Property Type</label>
+    <select name="property_type" class="form-control input-solid" required>
+        <option value="">Select Type</option>
+        <option value="house">House</option>
+        <option value="office">Office</option>
+        <option value="property">Property</option>
+        <option value="single-room">Single Room</option>
+        <option value="small-family">Small Family</option>
+        <option value="other">Other</option> <!-- add an "other" option -->
+    </select>
+</div>
+<div class="form-group col-md-4" id="otherPropertyType" style="display:none;">
+    <label>Other Property Type</label>
+    <input type="text" name="other_property_type" class="form-control input-solid" placeholder="Enter property type">
+</div>
+<script>
+    $(document).ready(function(){
+        $('select[name="property_type"]').on('change', function(){
+            var otherPropertyType = $('#otherPropertyType');
+            if ($(this).val() == 'other') {
+                otherPropertyType.show();
+            } else {
+                otherPropertyType.hide();
+            }
+        });
+    });
+</script>

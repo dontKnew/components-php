@@ -1,0 +1,48 @@
+$course = (new CourseModel)->select("url_title as url")->where("deleted_at", NULL)->findAll();
+        $country = (new CountryModel)->select("iso2 as url")->where("isPage", "yes")->where("deleted_at", NULL)->findAll();
+        $city = (new CityModel)->select("url, country_code as code")->where("isPage", "yes")->where("deleted_at", NULL)->findAll();
+        $state = (new StateModel)->select("url, country_code as code")->where("isPage", "yes")->where("deleted_at", NULL)->findAll();
+        
+        $city_state = array_merge($city,$state);
+        
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+        foreach ($course as $url) {
+            $xml .= '<url>';
+            $xml .= '<loc>' . base_url() .'/'.$url['url'] . '</loc>';
+            $xml .= '<lastmod>' . date("Y-m-d") . '</lastmod>';
+            $xml .= '<changefreq>daily</changefreq>';
+            $xml .= '<priority>0.8</priority>';
+            $xml .= '</url>';
+        }
+        
+        foreach ($course as $url) {
+            foreach($country as $cn){
+                $xml .= '<url>';
+                $xml .= '<loc>' . base_url() .'/'. strtolower($cn['url']) . '/'.$url['url'].'</loc>';
+                $xml .= '<lastmod>' . date("Y-m-d") . '</lastmod>';
+                $xml .= '<changefreq>daily</changefreq>';
+                $xml .= '<priority>0.8</priority>';
+                $xml .= '</url>';   
+            }
+        }
+        
+        foreach ($course as $url) {
+            foreach($city_state as $sc){
+                $xml .= '<url>';
+                $xml .= '<loc>' . base_url() .'/'. strtolower($sc['code']) . '/'.$url['url'].'/'.$sc['url'].'</loc>';
+                $xml .= '<lastmod>' . date("Y-m-d") . '</lastmod>';
+                $xml .= '<changefreq>daily</changefreq>';
+                $xml .= '<priority>0.8</priority>';
+                $xml .= '</url>';   
+            }   
+        }
+        
+        $xml .= '</urlset>';
+        
+        $uri = service('uri');
+        $filename = $uri->getHost().'_'. date("d_M_Y_H_i_s").'.xml';
+        header("Content-Type: application/xml");
+        header("Content-Disposition: attachment; filename=\"" . $filename . "\"");
+        echo $xml;
+        exit;

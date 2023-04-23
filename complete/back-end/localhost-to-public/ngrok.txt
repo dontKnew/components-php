@@ -1,0 +1,16 @@
+Download ngrok from their website: https://ngrok.com/download.
+
+Extract the downloaded file and open a terminal/command prompt in the extracted folder.
+
+Start your XAMPP server and make sure that your website is accessible at http://localhost or http://localhost:<port> (replace <port> with the port number of your web server, if applicable).
+
+In the terminal, run the following command to start ngrok:
+
+php
+Copy code
+ngrok http <port>
+Replace <port> with the port number of your web server. If you are using the default port 80, you can omit the port number.
+
+Ngrok will generate a unique URL that you can share with your client. The URL will look something like https://abcdefg.ngrok.io.
+
+Share the URL with your client and they should be able to access your website from anywhere.

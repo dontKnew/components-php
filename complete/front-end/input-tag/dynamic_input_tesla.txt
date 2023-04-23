@@ -1,0 +1,71 @@
+  <script>
+    let i = 1;
+    $(".add-input").click(function() {
+        var inputField = '<div class="input-group mb-3">\
+        <input type="text" class="form-control input-solid" placeholder="title" name="specification['+i+'][title]" >\
+        <input type="text" class="form-control input-solid mx-1" placeholder="sub title" name="specification['+i+'][sub_title]"  >\
+        <div class="input-group-append">\
+            <button class="btn btn-sm btn-warning remove-input btn-block" type="button"><i class="la la-remove"></i></button>\
+        </div>\
+    </div>';
+        $(this).parent().parent().after(inputField);
+        i++;
+    });
+    $(document).on("click", ".remove-input", function() {
+        $(this).parent().parent().remove();
+    });
+   </script>
+
+<div class="form-group col-md-12">
+                            <label for="input-field"> <button class="btn btn-sm btn-outline-primary add-input" type="button"><i class="la la-plus"></i></button> Bio Data  </label>
+                            <div class="input-group">
+                                <input type="text" class="form-control input-solid" placeholder="title" name="data[0][title]">
+                                <input type="text" class="form-control input-solid mx-1" placeholder="sub title" name="data[0][sub_title]">
+                                <div class="input-group-append">
+                                    <button class="btn btn-sm btn-warning remove-information" type="button"><i class="la la-remove"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+== EDIT ==
+ <div class="form-group col-md-12">
+                            <label for="input-field">
+                                <button class="btn btn-sm btn-outline-primary add-input" type="button"><i class="la la-plus"></i></button> Bio History
+                            </label>
+                            <?php
+                            $specification = json_decode($data['data'], true);
+                            if(isset($specification) && !empty($specification)):
+                                $i = count($specification);
+                                foreach($specification as $key => $value):
+                            ?>
+                            <div class="input-group">
+                                <input type="text" class="form-control input-solid" value="<?=$value['title']?>" name="data[<?=$key?>][title]" >
+                                <input type="text" class="form-control input-solid mx-1" value="<?=$value['sub_title']?>" placeholder="sub title" name="data[<?=$key?>][sub_title]">
+                                <div class="input-group-append">
+                                    <button class="btn btn-sm btn-warning remove-input" type="button"><i class="la la-remove"></i></button>
+                                </div>
+                            </div>
+                            <?php endforeach; endif;?>
+                        </div>
+<script>
+    $(document).ready(function() {
+        let i = <?=$i?>;
+        $(".add-input").click(function() {
+            var inputField = '<div class="input-group">\
+                <input type="text" class="form-control input-solid" placeholder="title" name="data['+i+'][title]">\
+                <input type="text" class="form-control input-solid mx-1" placeholder="sub title" name="data['+i+'][sub_title]">\
+                <div class="input-group-append">\
+                    <button class="btn btn-sm btn-warning remove-input" type="button"><i class="la la-remove"></i></button>\
+                </div>\
+            </div>';
+            $(this).parent().parent().after(inputField);
+            i++;
+        });
+        $(document).on("click", ".remove-input", function() {
+            $(this).parent().parent().remove();
+        });
+    });
+    </script>

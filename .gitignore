@@ -1,0 +1,15 @@
+javafx-sdk-17.0.6
+key.json
+notes.txt
+*.zip
+.idea
+vendor
+rapidex_networks
+node_modules
+.env
+*.mp4
+*.mp3
+*.exe
+*.dl
+*.exe
+check_script

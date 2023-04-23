@@ -1,0 +1,37 @@
+$("#join_course_form").submit(function(e){
+            e.preventDefault();
+            $("#submit_btn").text("Please Wait");
+            var formData = $(this).serialize();
+            $.ajax({
+              type: "POST",
+              url: "library/mail.php",
+              data: formData,
+              success: function(data){
+                $("submit_btn").text("Submit");
+                try {
+                    let response = JSON.parse(data);   
+                    if(response.status=="200"){
+                        $("#join_course_form")[0].reset();
+                        $(".noti_msg").html(`<div class="col-md-12 text-center">\
+                                <div class="alert alert-success">Thanks for connecting us! We'll contact you ASAP</div>\
+                            </div>`);
+                            
+                        setTimeout(function(){
+                            $(".quickEnquiry").click();      
+                        },3000); 
+                        
+                    }else {
+                        $(".noti_msg").html(`<div class="col-md-12 text-center">\
+                            <div class="alert alert-warning">Something is wrong, Please try again later</div>\
+                        </div>`);
+                        console.warn("Something is wrong "+data);
+                    }
+                }catch(err){
+                    console.warn("Error "+err);
+                    $(".noti_msg").html(`<div class="col-md-12 text-center">\
+                        <div class="alert alert-danger">Server Side Something Wrong, Please try again later!</div>\
+                    </div>`);
+                }
+              }
+            });
+      });

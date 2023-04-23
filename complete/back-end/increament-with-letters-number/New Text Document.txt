@@ -1,0 +1,29 @@
+$start = trim($arrStr[0]);
+                    $end = trim($arrStr[1]);
+                    $post_code_first = explode(" ", $start);
+                    $input_post_code_first = explode(" ", $input);
+                    if(trim($input_post_code_first[0]==trim($post_code_first[0]))){
+                       for ($i = $start; $i <= $end; $i++) {
+                            if(trim($i)==trim($input)){
+                                $check = true;   
+                                break;
+                            }
+                        }   
+                    }
+
+
+
+
+
+
+
+
+
+$start = '001-25';
+$end = '001-30';
+
+for ($i = $start; $i <= $end; $i++) {
+    echo $i . "<br>";
+}
+
+just use this code and see the magic ;)

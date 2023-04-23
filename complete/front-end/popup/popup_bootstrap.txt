@@ -1,0 +1,134 @@
+<input type="hidden" class="btn btn-primary quickEnquiry"  id="quickEnquiry" data-toggle="modal" data-target="#exampleModal"> </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content border border-dark" style="background-color:white">    
+          
+        <button aria-hidden="true"  type="button" class="quick-equiry-close" data-dismiss="modal" aria-label="Close">x</button>
+          <div class="modal-body quick-enquiry">
+              <h3 class="text-primary text-center mt-1 quick-enquiry-head"><u>Join Best Course</u></h3>
+                <form id="join_course_form" class="mt-4 mb-2">
+                    <div class="row noti_msg"></div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <select  name="course" class="form-control custom-style-input" required="">
+                                <option value="">Select Course</option>    
+                                <option value="CC">Cabin Crew</option>    
+                                <option value="CPL">Commercial Pilot Licence</option>    
+                                <option value="ATPL">Airline Transport Pilot Licence</option>    
+                                <option value="IP">Interview Preparation</option>    
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" name="name" class="form-control custom-style-input" placeholder="Your Name" required="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="email" name="email" class="form-control custom-style-input" placeholder="Your Email" required="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="number" name="phone" class="form-control custom-style-input" placeholder="Your Phone No." required="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select  name="age_criteria" class="form-control custom-style-input" required="">
+                                <option value="">Select Age Criteria</option>    
+                                <option value="16-20">16-20</option>    
+                                <option value="21-25">21-25</option>    
+                                <option value="26-30">26-30</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select  name="gender" class="form-control custom-style-input" required="">
+                                <option value="">Select Gender</option>    
+                                <option value="Male">Male</option>    
+                                <option value="Female">Female</option>    
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select  name="qualification" class="form-control custom-style-input" required="">
+                                <option value="">Select Qualification</option>    
+                                <option value="12th Passed">12th Passed</option>    
+                                <option value="Graduated">Graduated</option>    
+                                <option value="Post Graduated">Post Graduated</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <textarea  name="message" class="form-control custom-style-input" placeholder="Enter Message(optional)"></textarea>
+                        </div>
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-md btn-primary custom-btn text-center" id="submit_btn">Submit :)</button>
+                        </div>
+                    </div>
+                </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+<style>
+    .quick-enquiry-head, .quick-enquiry-head + p {
+            text-align: center !important;
+            font-weight: bolder !important;
+            margin-bottom: 20px;
+    }
+    .quick-enquiry-head {
+        color: #620f65 !important;
+        font-family: unset;
+        font-weight:700 !important;
+    }
+    div.form-group >  .custom-style-input {
+        box-shadow: inset 1px 1px 2px #ccc;
+        height: 35px;
+        padding: 0 15px;
+        color: #797979;
+        margin-bottom: 0;
+        font-weight:bolder;
+    }
+    .quick-enquiry {
+        padding:.7rem .5rem .4rem .5rem !important;
+        border: 8px solid #620f65;
+        box-shadow: 0px 0px 30px 0px rgb(255 255 255);
+        background-color: rgba( 255, 255, 255, 1.00 );
+        border-radius:5px;
+        
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+    .custom-btn {
+        background-color:#620f65 !important;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    input {
+        border-color: #6706d3!important;
+    }
+    
+    .quick-equiry-close {
+      position: absolute;
+        height: 31px;
+        width: 31px;
+        left: auto;
+        right: -4px;
+        bottom: auto;
+        top: -6px;
+        padding: 0px;
+        color: #ffffff;
+        font-family: Arial;
+        font-weight: 100;
+        font-size: 22px;
+        line-height: 14px;
+        border:2px solid #fff;
+        border-radius: 26px;
+        box-shadow: 0px 0px 15px 1px rgb(2 2 2 / 75%);
+        text-shadow: 0px 0px 0px rgb(0 0 0 / 23%);
+        background-color: #620f65 !important;
+        z-index: 1000;
+    }
+
+</style>
+

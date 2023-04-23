@@ -1,0 +1,24 @@
+<html>
+<script src="https://jsuites.net/v4/jsuites.js"></script>
+<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+ 
+<input type='button' value='Show notification' class='jbutton dark' id='notification' />
+<input type='button' value='Show error' class='jbutton dark' id='notification-error' />
+ 
+<script>
+document.getElementById('notification').onclick = function() {
+    jSuites.notification({
+        name: 'Jsuites toast notification',
+        message: 'Successfully Update',
+    })
+}
+ 
+document.getElementById('notification-error').onclick = function() {
+    jSuites.notification({
+        error: 1,
+        name: 'Error message',
+        message: 'Something went wrong',
+    })
+}
+</script>
+</html>

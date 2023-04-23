@@ -1,0 +1,14 @@
+require GD - sqaure letter form generated
+
+private function generateProfile($letter, $filename){
+        $image = imagecreatetruecolor(200, 200);
+        $bg_color = imagecolorallocate($image, rand(0, 255), rand(0, 255), rand(0, 255));
+        imagefill($image, 0, 0, $bg_color);
+        $text_color = imagecolorallocate($image, 0, 0, 0);
+        $font = 'frontend/webfonts/arial.ttf';
+        imagettftext($image, 100, 0, 50, 150, $text_color, $font, $letter);
+        imagepng($image, "frontend/images/user_gallery/compress/".$filename);
+        imagepng($image, "frontend/images/user_gallery/original/".$filename);
+        imagedestroy($image);
+        
+    }

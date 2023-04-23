@@ -1,0 +1,6 @@
+{
+  "require": {
+      "stripe/stripe-php": "^8.0"
+  }
+}
+composer require stripe/stripe-php ^8.0

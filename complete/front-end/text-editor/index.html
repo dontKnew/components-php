@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Text Editor </title>
+    <link href="summernote/summernote-lite.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <textarea name="title" id="summernote" cols="30" rows="10"></textarea>
+    <button id="button">submit</button>
+
+    <script src="summernote/jquery-3.4.1.slim.min.js"></script>
+    <script src="summernote/summernote-lite.min.js"></script>
+	
+    <script>
+//<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.js" integrity="sha512-98e5nQTE7pmtZ3xoD5GCVKafmziXDT5WINC91MugFzF57zzBnmvGQl1N70cvdyBSWxjCOC55gq9Zn76MUgtEMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+//<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-lite.min.css" integrity="sha512-wXEyXmtKft9mEiu8LTc3+3BQ95aYbvxgvzH4IzFHOwvGlA14B6zREXD4CRmUPx8r2Z1RVUOXS47bwjsotSlZkQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      $(document).ready(function(){
+        $('#summernote').summernote({
+            tabsize: 2,
+            height: 120,
+            codemirror: { // codemirror options
+                theme: 'monokai'
+            }
+        });
+        $("#button").click(function(){
+
+          console.warn($("#summernote").val());
+
+        })
+      });
+    </script>
+  </body>
+</html>
