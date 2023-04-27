@@ -1,0 +1,3 @@
+<?php
+$data="Display Data Here Message";echo "Hello <br>";?><?php echo "nice work";?><!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Minify PHP Code</title></head><style>body{background:yellow;font-weight:bold}</style><body><h1>Minify PHP Code</h1><p><?php echo $data;?></p><script>alert("its working here");</script></body></html>
