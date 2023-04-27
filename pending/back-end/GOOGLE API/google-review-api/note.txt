@@ -1,2 +1,0 @@
-1. You need an ACCOUNT ID AND PLACE ID
-2. Required OAuth 2.0 access token for authentication
