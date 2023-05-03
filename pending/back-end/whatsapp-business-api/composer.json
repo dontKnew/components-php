@@ -1,0 +1,5 @@
+{
+    "require": {
+        "netflie/whatsapp-cloud-api": "^2.0"
+    }
+}
