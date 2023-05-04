@@ -1,4 +1,15 @@
 <?php
+function getGoogleMap($iframe_tag){
+	$dom = new DOMDocument();
+	$dom->loadHTML($iframe_tag);
+	$iframe = $dom->getElementsByTagName('iframe')->item(0);
+	$src = $iframe->getAttribute('src');
+	$queryString = parse_url($src, PHP_URL_QUERY);
+	parse_str($queryString, $params);
+	$data['google_map'] = $params['pb'] ?? null;
+	return $data['google_map'];
+}
+
 
 $address = "House No. 702 Gali No.11, Near Ram Baba Wali Gali, court wali gali, Kapashera, New Delhi-110037";
 function linesLimiter($string, $limit) {
