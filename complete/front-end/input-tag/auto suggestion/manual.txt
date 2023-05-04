@@ -1,0 +1,66 @@
+<div class="form-group" style="position:relative">
+    <div class="input-group">
+        <input type="text" class="form-control mansi_headform course-input" id="search-course"  placeholder="Search Courses..." required>
+        <div class="input-group-append"> <button class="btn btn-secondary" type="submit"> <i class="fa fa-search"></i> </button> </div>
+   </div>
+    <div id="course-suggestion" class="list-group">
+        <a href="#" class="list-group-item list-group-item-action" > Prince Foundation Course </a>
+    </div>
+</div>
+
+<style>
+    #course-suggestion {
+        max-height: 145px;
+        z-index: 9;
+        overflow-y: auto;
+        position: absolute;
+        top: 48px;
+        width: 100%;
+    }
+    #course-suggestion > a {
+        padding:5px 20px;
+        font-size: medium;
+        z-index: 9;
+    }
+    #course-suggestion::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+    #course-suggestion::-webkit-scrollbar-thumb {
+        background-color: white;
+        outline: 1px solid green;
+    }
+
+    #course-suggestion::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    </style>
+<script>
+window.onload = function(){
+        $('#course-suggestion').hide();
+    }
+    $(document).on("input", "#search-course", function(){
+        $('#search-course').keyup(function() {
+            var query = $(this).val();
+            if (query !== '') {
+                $.ajax({
+                    url: '<?php echo base_url("get-course"); ?>/'+query,
+                    type: 'GET',
+                    success: function(data) {
+                        $('#course-suggestion').html(data);
+                        $('#course-suggestion').fadeIn("fast");
+                    }
+                });
+            } else {
+                console.warn("blank");
+                $('#course-suggestion').fadeOut("fast");
+            }
+        });
+    });
+    
+     $(document).on('click', function(e) {
+        if (!$(e.target).closest('#course-suggestion').length) {
+            $('#course-suggestion').fadeOut("fast");
+        }
+    });
+</script>
