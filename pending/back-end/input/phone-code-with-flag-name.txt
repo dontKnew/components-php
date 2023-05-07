@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Clue Mediator</title>
+  <!-- CSS -->
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.min.css" />
+  <!-- JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/intlTelInput.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-md-8 mt-4">
+    <form method="get">
+        <input type="text" name="phone_number" id="phone" />
+        <input type="submit">
+    </form>
+    </div>
+  </div>
+
+  <script>
+    var input = document.querySelector("#phone");
+    intlTelInput(input, {
+      initialCountry: "auto",
+      geoIpLookup: function (success, failure) {
+        $.get("https://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+          var countryCode = (resp && resp.country) ? resp.country : "us";
+          success(countryCode);
+        });
+      },
+    });
+  </script>
+</body>
+
+</html>
