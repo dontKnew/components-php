@@ -1,0 +1,15 @@
+/* .attachment-file-input.selected:lang(en)::after {
+    content: "" !important;
+    
+  }
+  .attachment-file {
+    overflow: hidden;
+  }
+  .attachment-file-input {
+    white-space: nowrap;
+  }
+   */
+
+.pointer {
+  cursor: pointer;
+}

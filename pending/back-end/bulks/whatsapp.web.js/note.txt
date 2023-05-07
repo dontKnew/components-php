@@ -1,1 +1,0 @@
-https://wwebjs.dev/guide/authentication.html#localauth-strategy	
