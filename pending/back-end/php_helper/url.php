@@ -79,3 +79,10 @@ function dump($data='', $var_dump=true, $print_r=false, $var_export=false, $pret
         }
     }
 }
+
+ function url_exists($url) {
+        $headers = @get_headers($url);
+        foreach($headers as $hd){
+            return strpos($hd, '200') !== false;   
+        }
+    }
