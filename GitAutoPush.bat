@@ -5,7 +5,7 @@
 	cd C:\xampp\htdocs\start\globalHeight\components
 	
 	::Pull any external changes (maybe you deleted a file from your repo?)
-	::git pull origin master
+	git pull origin master
 	
 	::Add all files in the directory
 	git add .
