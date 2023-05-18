@@ -1,19 +1,32 @@
 <?php
-$exportData = array(
-    array("sajid", "rahul", "kamina", "address"),
-    array("John", "Doe", "Example Co.", "123 Main St."),
-    array("John", "Doe", "Example Co.", "123 Main St."),
-    array("John", "Doe", "Example Co.", "123 Main St."),
-    array("John", "Doe", "Example Co.", "123 Main St.")
-);
 
-header("Content-Disposition: attachment; filename=\"demo.csv\"");
+include_once("./includes/orm/config.php");
+$student_list = $db->table('student_fees')->select("student.name", "student.student_id", "student_fees.*")->join('student', 'student.id','student_fees.student')->orderBy('student_fees.id', 'desc')->get();
+$filename = "student_fees_" . date("d_m_Y_H_i_s") . ".csv";
+
+header("Content-Disposition: attachment; filename=\"$filename\"");
 header("Content-Type: text/csv;");
 header("Pragma: no-cache");
 header("Expires: 0");
 
 $out = fopen("php://output", 'w');
-foreach ($exportData as $row) {
-    fputcsv($out, $row);
+
+// Write table headers
+$headers = array_keys((array) $student_list[0]);
+$headers = array_filter($headers, function ($header) {
+    return $header !== 'student' && $header !== 'id' && $header !=='updated_at';
+});
+fputcsv($out, $headers);
+
+// Write data rows
+foreach ($student_list as $row) {
+    unset($row->student);
+    unset($row->id);
+    unset($row->updated_at);
+    $row->paid_date = date("D d-m-Y", strtotime($row->paid_date));
+    $row->created_at = date("D d-m-Y", strtotime($row->created_at));
+    fputcsv($out, (array) $row);
 }
 fclose($out);
+exit;
+?>
