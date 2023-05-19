@@ -12,13 +12,13 @@ $yt = new YoutubeDl();
 $yt->setBinPath('yt-dlp.exe');
 $collection = $yt->download(
     Options::create()
-        ->downloadPath('/video/video')
+        ->downloadPath('/download')
         ->url('https://www.youtube.com/watch?v=sgRhOjyubEQ') // will download also playlist : https://www.youtube.com/watch?v=za1kG2-dvlE&list=RDza1kG2-dvlE&start_radio=1
 );
 
 /*
- * Use Ajax to get currently progress
- * $yt->onProgress(static function (?string $progressTarget, string $percentage, string $size, string $speed, string $eta, ?string $totalTime): void {
+ * Use Ajax to get currently progress */
+ $yt->onProgress(static function (?string $progressTarget, string $percentage, string $size, string $speed, string $eta, ?string $totalTime): void {
     echo "Download file: $progressTarget; Percentage: $percentage; Size: $size";
     if ($speed) {
         echo "; Speed: $speed <br>";
@@ -29,7 +29,7 @@ $collection = $yt->download(
     if ($totalTime !== null) {
         echo "; Downloaded in: $totalTime <br>";
     }
-});*/
+});
 
 foreach ($collection->getVideos() as $video) {
     if ($video->getError() !== null) {
