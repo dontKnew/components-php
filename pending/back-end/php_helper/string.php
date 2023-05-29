@@ -234,5 +234,29 @@ function ($str){
 	$newstr = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
 	return $newstr;
 }
+
+function ytCode($url){
+        $queryString = parse_url($url, PHP_URL_QUERY);
+        parse_str($queryString, $params);
+        $videoId = $params['v'];
+        return $videoId;
+    }
+    
+function googleMapCode($iframeSrc){
+   $iframeSrc = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.2960105246116!2d77.26865487473452!3d28.56087268733267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3eb0c085e9f%3A0xbc5cb8fc0f58efa4!2sShipmiles!5e0!3m2!1sen!2sin!4v1685167420018!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+    
+    $dom = new DOMDocument();
+    $dom->loadHTML($iframeSrc);
+    
+    $xpath = new DOMXPath($dom);
+    $url = $xpath->evaluate("string(//iframe/@src)");
+    $queryString = parse_url($url, PHP_URL_QUERY);
+    parse_str($queryString, $params);
+    $videoId = $params['pb'];
+    return $videoId;
+ 
+}
+
+
 ?>
 
