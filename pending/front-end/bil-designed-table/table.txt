@@ -1,0 +1,70 @@
+<table style="height: 90px; width: 100%; border-collapse: collapse; border-style: solid;" border="1">
+  <tbody>
+    <tr style="height: 18px;">
+      <td style="width: 50%; height: 18px;">A</td>
+      <td style="width: 25%; height: 18px;">&nbsp;</td>
+      <td style="width: 25%; height: 18px;">&nbsp;</td>
+    </tr>
+    <tr style="height: 18px;">
+      <td style="width: 50%; height: 18px;">&nbsp;</td>
+      <td style="width: 25%; height: 18px;">&nbsp;</td>
+      <td style="width: 25%; height: 18px;">&nbsp;</td>
+    </tr>
+    <tr style="height: 18px;">
+      <td style="width: 50%; height: 18px;">&nbsp;</td>
+      <td style="width: 25%; height: 18px;">&nbsp;</td>
+      <td style="width: 25%; height: 18px;">&nbsp;</td>
+    </tr>
+    <tr style="height: 18px;">
+      <td style="width: 50%; height: 18px;">&nbsp;</td>
+      <td style="width: 25%; height: 18px;">&nbsp;</td>
+      <td style="width: 25%; height: 18px;">&nbsp;</td>
+    </tr>
+    <tr style="height: 18px;">
+      <td style="width: 50%; height: 18px;">&nbsp;</td>
+      <td style="width: 25%; height: 18px;">&nbsp;</td>
+      <td style="width: 25%; height: 18px;">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<table style="border-collapse: collapse; width: 100%; height: 36px;" border="1">
+  <tbody>
+    <tr style="height: 18px;">
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+    </tr>
+    <tr style="height: 18px;">
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+      <td style="width: 12.5%; height: 18px;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="width: 12.5%;">&nbsp;</td>
+      <td style="width: 12.5%;">&nbsp;</td>
+      <td style="width: 12.5%;">&nbsp;</td>
+      <td style="width: 12.5%;">&nbsp;</td>
+      <td style="width: 12.5%;">&nbsp;</td>
+      <td style="width: 12.5%;">&nbsp;</td>
+      <td style="width: 12.5%;">&nbsp;</td>
+      <td style="width: 12.5%;">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+  <tbody>
+    <tr>
+      <td style="width: 100%;">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
