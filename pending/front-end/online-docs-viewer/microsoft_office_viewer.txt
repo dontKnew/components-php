@@ -1,0 +1,6 @@
+<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://courier.shipmiles.com/library/PrintSelfDeclarationForm.pdf' width='100%' height='650px' frameborder='0'></iframe>
+//You can use the above code to embed and display all types of the Microsoft Office documents (.doc, .docx, .xls, .xlsx, .ppt, .pptx) in HTML.
+
+
+option 2. 
+ echo '<iframe src="https://drive.google.com/viewerng/viewer?embedded=true&url=' . urlencode($documentPath) . '" frameborder="0" width="100%" height="600"></iframe>';

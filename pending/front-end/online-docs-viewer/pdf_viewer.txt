@@ -1,0 +1,10 @@
+                $contentType = 'application/pdf';
+
+
+ // Set the appropriate headers
+        header('Content-Type: ' . $contentType);
+        header('Content-Disposition: inline; filename="' . basename($documentPath) . '"');
+        header('Content-Length: ' . filesize($documentPath));
+
+        // Output the file contents
+        readfile($documentPath);
