@@ -7,7 +7,6 @@ This is an example of submitting a form to a Google Sheet using Google Apps Scri
 1. APP SCRIPT : 
 ```javascript
 const scriptProp = PropertiesService.getScriptProperties();
-
 function initialSetup() {
   const activeSpreadsheet = SpreadsheetApp.getActive();
   scriptProp.setProperty('key', activeSpreadsheet.getId());
@@ -24,7 +23,7 @@ function doGet(e) {
 
     const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
     const newRow = [];
-
+    
     const timeZone = "Asia/Kolkata";
     const now = new Date();
     const currentDate = Utilities.formatDate(now, timeZone, "dd-MM-yyyy");
@@ -36,10 +35,10 @@ function doGet(e) {
 
     const formattedTime = `${formattedHours}:${formattedMinutes} ${amPm}`;
     const dateTime = `${currentDate} ${formattedTime}`;
-
-    for (const header of headers) {
-      newRow.push(header === 'Date_Time' ? dateTime : e.parameter[header]);
-    }
+    
+	for (const header of headers) {
+ 	 newRow.push(header === 'Date_Time' ? dateTime : e.parameter[header]);
+	}
 
     const nextRow = sheet.getLastRow() + 1;
     sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow]);
@@ -79,6 +78,9 @@ function doGet(e) {
   </div>
 
   <div class="row">
+    <div class="col-12">
+      <div id='response_msg'></div>
+    </div>
     <div class="col-12">
       <div class="button text-center rounded-buttons">
         <button type="submit" class="btn primary-btn rounded-full gtm-fire" id="submitBtn">
