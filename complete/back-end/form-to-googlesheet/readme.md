@@ -112,7 +112,7 @@ async function handleSubmit(e) {
     }
 
     const queryString = searchParams.toString();
-    const url = `https://script.google.com/macros/s/AKfycbwluTGOi5qgqJeznOprJ5fgWI9-npKDD1ZAq6qEbqHlZubEbzAtlyr04jY6KcOKf68Bsw/exec?${queryString}`;
+    const url = `here-app-script-your-url?${queryString}`;
     const response = await fetch(url, {
       method: "GET",
     });
@@ -122,10 +122,8 @@ async function handleSubmit(e) {
     if (result === "success") {
       e.target.reset();
       document.getElementById("response_msg").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:12px; font-weight:bold'>Thank you for your query, We`ll contact you soon!</div>";
-      document.getElementById("response_msg2").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:15px; font-weight:bold'>Thank you for your query, We`ll contact you soon!</div>";
     } else {
       document.getElementById("response_msg").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:12px; font-weight:bold'>Something wrong, Please try again</div>";
-      document.getElementById("response_msg2").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:15px; font-weight:bold'>Something wrong, Please try again</div>";
     }
   } catch (error) {
     console.error(error);
