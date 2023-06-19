@@ -80,6 +80,9 @@ function doGet(e) {
 
   <div class="row">
     <div class="col-12">
+      <div id='response_msg'></div>
+    </div>
+    <div class="col-12">
       <div class="button text-center rounded-buttons">
         <button type="submit" class="btn primary-btn rounded-full gtm-fire" id="submitBtn">
           REQUEST A CALL BACK
