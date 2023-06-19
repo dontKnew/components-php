@@ -1,9 +1,13 @@
-  1. Create Google Sheet Form
-2. Create Fields name same as you form
-3. Extension->App Script->
-4. Enter belwo scriopt in Code.gs : 
+# Google Sheet Form Submission
+This is an example of submitting a form to a Google Sheet using Google Apps Script, Please watch the youtube video for setup below script 
 
+=> <a href="https://studio.youtube.com/channel/UCx17TpbQ8JoQ-EdeltD1LIA/videos?d=ud">Video Demo </a>
+
+## Source Code
+1. APP SCRIPT : 
+```javascript
 const scriptProp = PropertiesService.getScriptProperties();
+
 function initialSetup() {
   const activeSpreadsheet = SpreadsheetApp.getActive();
   scriptProp.setProperty('key', activeSpreadsheet.getId());
@@ -20,7 +24,7 @@ function doGet(e) {
 
     const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
     const newRow = [];
-    
+
     const timeZone = "Asia/Kolkata";
     const now = new Date();
     const currentDate = Utilities.formatDate(now, timeZone, "dd-MM-yyyy");
@@ -32,10 +36,10 @@ function doGet(e) {
 
     const formattedTime = `${formattedHours}:${formattedMinutes} ${amPm}`;
     const dateTime = `${currentDate} ${formattedTime}`;
-    
-	for (const header of headers) {
- 	 newRow.push(header === 'Date_Time' ? dateTime : e.parameter[header]);
-	}
+
+    for (const header of headers) {
+      newRow.push(header === 'Date_Time' ? dateTime : e.parameter[header]);
+    }
 
     const nextRow = sheet.getLastRow() + 1;
     sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow]);
@@ -51,42 +55,46 @@ function doGet(e) {
     lock.releaseLock();
   }
 }
+```
+2. HTML FORM 
+```HTML
+<form method="post" id="enquiry_form" class="contact-form contact-form2">
+  <input type="hidden" name="sheet_name" value="Enquiry Form">
+  <div class="row">
+    <div class="col-12 form-group">
+      <input type="text" name="Name" class="form-control" placeholder="Your Name" required/>
+    </div>
+    <div class="col-12 form-group">
+      <input type="text" name="Ship_From" class="form-control" placeholder="Ship From" required/>
+    </div>
+    <div class="col-12 form-group">
+      <input type="text" name="Ship_To" class="form-control" placeholder="Ship To" required/>
+    </div>
+    <div class="col-12 form-group">
+      <input type="number" name="Phone" class="form-control" placeholder="Phone No." required/>
+    </div>
+    <div class="col-12 form-group">
+      <textarea class="form-control" name="Message" placeholder="Type your message..."></textarea>
+    </div>
+  </div>
 
-   <form  method="post" id="enquiry_form" class="contact-form contact-form2">
-                        <input type="hidden" name="sheet_name" value="Enquiry Form">
-                        <div class="row">
-                            <div class="col-12 form-group">
-                                <input type="text" name="Name" class="form-control"  placeholder="Your Name" required/>
-                            </div>
-                            <div class="col-12 form-group">
-                                <input type="text" name="Ship_From" class="form-control"  placeholder="Ship From" required/>
-                            </div>
-                            <div class="col-12 form-group">
-                                <input type="text" name="Ship_To" class="form-control"  placeholder="Ship To" required/>
-                            </div>
-                            <div class="col-12 form-group">
-                                <input type="number" name="Phone" class="form-control" placeholder="Phone No." required/>
-                            </div>
-                            <div class="col-12 form-group">
-                                <textarea class="form-control" name="Message" placeholder="Type your message..." /></textarea>
-                            </div>
-                        </div>
-                  
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="button text-center rounded-buttons">
-                                    <button type="submit" class="btn primary-btn rounded-full gtm-fire" id="submitBtn">
-                                        REQUEST A CALL BACK
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-const form1 = document.querySelector("#enquiry_form");
-const form2 = document.querySelector("#contact_form");
+  <div class="row">
+    <div class="col-12">
+      <div class="button text-center rounded-buttons">
+        <button type="submit" class="btn primary-btn rounded-full gtm-fire" id="submitBtn">
+          REQUEST A CALL BACK
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+```
+3. Send Request to googlesheet
+```javascript
+const form = document.querySelector("#enquiry_form");
 
-form1.addEventListener("submit", handleSubmit);
-form2.addEventListener("submit", handleSubmit);
+form.addEventListener("submit", handleSubmit);
+
 async function handleSubmit(e) {
   e.preventDefault();
 
@@ -94,9 +102,6 @@ async function handleSubmit(e) {
   submitBtn.innerHTML = "Please Wait!";
 
   try {
-    const phone_no = document.getElementById("phone_no").value;
-    console.warn(validatePhoneNumber(phone_no)); // Validate the phone number
-
     const formData = new FormData(e.target);
     const searchParams = new URLSearchParams();
 
@@ -114,11 +119,11 @@ async function handleSubmit(e) {
 
     if (result === "success") {
       e.target.reset();
-          document.getElementById("response_msg").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:12px; font-weight:bold'>Thank you for your query, We`ll contact you soon!</div>";
-          document.getElementById("response_msg2").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:15px; font-weight:bold'>Thank you for your query, We`ll contact you soon!</div>";
+      document.getElementById("response_msg").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:12px; font-weight:bold'>Thank you for your query, We`ll contact you soon!</div>";
+      document.getElementById("response_msg2").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:15px; font-weight:bold'>Thank you for your query, We`ll contact you soon!</div>";
     } else {
-          document.getElementById("response_msg").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:12px; font-weight:bold'>Something wrong, Please try again</div>";
-          document.getElementById("response_msg2").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:15px; font-weight:bold'>Something wrong, Please try again</div>";
+      document.getElementById("response_msg").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:12px; font-weight:bold'>Something wrong, Please try again</div>";
+      document.getElementById("response_msg2").innerHTML = "<div class='alert alert-success p-1 text-center' style='font-size:15px; font-weight:bold'>Something wrong, Please try again</div>";
     }
   } catch (error) {
     console.error(error);
@@ -126,3 +131,8 @@ async function handleSubmit(e) {
     submitBtn.innerHTML = "Submit";
   }
 }
+
+```
+
+
+
