@@ -1,7 +1,7 @@
 # Google Sheet Form Submission
 This is an example of submitting a form to a Google Sheet using Google Apps Script, Please watch the youtube video for setup below script 
 
-=> <a href="https://studio.youtube.com/channel/UCx17TpbQ8JoQ-EdeltD1LIA/videos?d=ud">Video Demo </a>
+=> <a href="https://youtu.be/i1iv0YDPxUE">Video Demo </a>
 
 ## Source Code
 1. APP SCRIPT : 
