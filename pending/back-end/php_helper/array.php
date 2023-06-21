@@ -70,5 +70,11 @@ function csvToArray($filename, $first_line_col=true) {
     }
 }
 
+function sortBykey($key){
+	usort($destination_taging, function ($a, $b) {
+	    return $a[$key] <=> $b[$key];
+	});
+}
+
 
 ?>
