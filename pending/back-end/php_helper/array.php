@@ -45,5 +45,25 @@ function uniqueArr($arr){
 	return	$uniqueArr; 
 }
 
+function csvToArray($filename){
+    $csvFile = fopen($filename, 'r');
+    $data = array();
+    $addedValues = array();
+    while (($row1 = fgetcsv($csvFile)) !== false) {
+        $row  = array();
+        foreach($row1 as $r){
+            array_push($row, trim($r));
+        }
+        if(!empty($row[2])){
+            if (!in_array($row[2], $addedValues)) {
+                array_push($data, $row);  
+                array_push($addedValues, $row[1]);
+            }
+        }
+    }
+    fclose($csvFile);
+    return $data;
+}
+
 
 ?>
