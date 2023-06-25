@@ -1,47 +1,22 @@
 <?php
 
-class PDFChecker {
-    
-    public function isProtected($uploadedfilename, $path="upload/awd_kyc/"){
-        try {
-            $filename= $path. $uploadedfilename; 
-            if(file_exists($filename)){
-                $handle = fopen($filename, "r");
-                $contents = fread($handle, filesize($filename));
-                fclose($handle);
-                if (stristr($contents, "/Encrypt"))
-                      {
-                            $_SESSION['failure'] = 'Please upload pdf file without password';
-                            header('Location: add_awb.php?id='.$_GET['id'].'#kyc');
-                            return false;
-                            exit;
-                          
-                      }
-                      {return true;}
-            }else {
-                $_SESSION['failure'] = 'Please upload pdf file without password';
-                header('Location: add_awb.php?id='.$_GET['id'].'#kyc');
-                return false;
-                exit;
-            }
-        }catch(Exception $e){
-            $error =  $e-getMessage();
-            $_SESSION['failure'] = "Error ".$error;
-            header('Location: add_awb.php?id='.$_GET['id'].'#kyc');
-            return false;
-            exit;
-        }
-        
+function isPDFLocked($file) {
+    if (!file_exists($file)) {
+        return 'File not found';
+    }
+    $extension = pathinfo($file, PATHINFO_EXTENSION);
+    if (strtolower($extension) !== 'pdf') {
+        return 'Please upload a PDF file';
     }
 
+    $contents = file_get_contents($file);
+    if (stristr($contents, "/Encrypt")) {
+        return "PDF is locked";
+    }else {
+        return 'Pdf is not locked';
+    }
 }
-#Example : 
-    
-    // $pdf = new PDFChecker();
-    // if($pdf->isProtected("1656669722_56_2_NK JHA PAN CARD.pdf")){   
-    //     echo "FINE";
-    // }else {
-    //     echo "Not Fine";
-    // }
+
+echo isPDFLocked('my_locked_file.pdf')
 
 ?>

@@ -9,7 +9,7 @@ use Netflie\WhatsAppCloudApi\Message\Media\LinkID;
 // Instantiate the WhatsAppCloudApi super class.
 $whatsapp_cloud_api = new WhatsAppCloudApi([
     'from_phone_number_id' => '111588701765023',
-    'access_token' => 'EAAJD1IZBZA8tkBAJcYWI7kSyZBtOwDnsM08Y4GhDJ5U3Ypc3rmCS6J2Lp82kmHfeBwHhtdlIgUBIMxcbfgoeHp1UL3zem0olHV4Wk0fZBX2ysUPl849DbB1ra5A5OnvGZCfDpqUC8itHkqeZAbtQ4gHlVRZBMaQcl4RfB4QWXuV0zURDFitEAwVU5hgZBhltSDzgiN0LZAvJUZBOlydI2ftD36I7UGLZAEzGzEZD',
+    'access_token' => '',
 ]);
 
 try {

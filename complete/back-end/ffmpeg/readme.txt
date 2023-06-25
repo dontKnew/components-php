@@ -1,16 +1,3 @@
-I will teell you how can u , convert video to audio & change video format & change audio format, & extract the audio from video
-
-=> First Download below ffempg & after download zip file extrac & goto bin folder copy all .exe file paste into ffmpeg-exe folder
-=> After above step Lets show u code & I will show you an example how can you do practically Just follow my video step carefully.. OK
-
-Lets start the video
-
-=> You see I stop converting,, its will run your video time OK :) Show after all result in ur folder
-=> you thats command which i show you, Ok if u have any issue, Please comment down I will try to solve this :) OK
-
-by by gys subscirbe this channel if this helpful for you & like the video by by
-
-
 Download Link for window 64bit- 
 https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-2023-03-05-git-912ac82a3c-full_build.7z
 

@@ -6,9 +6,8 @@
  * 4. now when you hit any event it will call webhook below code will handle it & you can see the output file_put_content to use..
  * */
 
-
 $hubVerifyToken = 'my_token';
-$accessToken = 'EAAJD1IZBZA8tkBAJcYWI7kSyZBtOwDnsM08Y4GhDJ5U3Ypc3rmCS6J2Lp82kmHfeBwHhtdlIgUBIMxcbfgoeHp1UL3zem0olHV4Wk0fZBX2ysUPl849DbB1ra5A5OnvGZCfDpqUC8itHkqeZAbtQ4gHlVRZBMaQcl4RfB4QWXuV0zURDFitEAwVU5hgZBhltSDzgiN0LZAvJUZBOlydI2ftD36I7UGLZAEzGzEZD';
+$accessToken = '';
 
 // Verify the webhook
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token']) && $_GET['hub_verify_token'] === $hubVerifyToken) {
