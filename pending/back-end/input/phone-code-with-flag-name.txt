@@ -22,18 +22,19 @@
     </div>
   </div>
 
-  <script>
-    var input = document.querySelector("#phone");
-    intlTelInput(input, {
-      initialCountry: "auto",
-      geoIpLookup: function (success, failure) {
-        $.get("https://ipinfo.io", function () { }, "jsonp").always(function (resp) {
-          var countryCode = (resp && resp.country) ? resp.country : "us";
-          success(countryCode);
-        });
-      },
-    });
-  </script>
+ <script>
+      var input = document.querySelector("#phone");
+      var iti = intlTelInput(input, {
+        initialCountry: "ae",
+        geoIpLookup: function (success, failure) {
+          success("ae");
+        },
+      });
+      
+      $(".iti__country").on("click", function(){
+          console.warn($(this).data('dial-code'));
+      });
+    </script>
 </body>
 
 </html>
