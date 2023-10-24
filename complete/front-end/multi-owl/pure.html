@@ -1,0 +1,115 @@
+<script>
+  
+    /*testimonial slider*/
+        const $testimonials = $('.testimonial');
+        let currentIndex = 0;
+        let interval;
+    
+        function showTestimonial(index) {
+            setTestimonialImg();
+            $testimonials.hide().eq(index).show();
+        }
+    
+        function nextTestimonial() {
+            clearInterval(interval); // Clear the interval
+            currentIndex = (currentIndex + 1) % $testimonials.length;
+            showTestimonial(currentIndex);
+            startInterval(); // Start a new interval after manual navigation
+        }
+    
+        function prevTestimonial() {
+            clearInterval(interval); // Clear the interval
+            currentIndex = (currentIndex - 1 + $testimonials.length) % $testimonials.length;
+            showTestimonial(currentIndex);
+            startInterval(); // Start a new interval after manual navigation
+        }
+    
+        function startInterval() {
+            setTestimonialImg();
+            interval = setInterval(nextTestimonial, 3000);
+        }
+        
+        function setTestimonialImg(){
+            let imgUrls = $(".testimonials-slider img").map(function() {
+                return $(this).data("original");
+            }).get();
+            $(".testimonials-slider  img").each(function(index) {
+                $(this).attr("src", imgUrls[index]);
+            });
+        }
+        $('.next-btn').on('click', nextTestimonial);
+        $('.prev-btn').on('click', prevTestimonial);
+    
+        startInterval();
+        
+        
+    /*end testimonial slider*/
+</script>
+
+<style>.testimonials-area .testimonials-slider .testimonials-card{padding:26px 0 22px}.google-review-btn:hover{background-color:green!important}.google-review-slider-child{height:auto;min-height:320px}.testimonials-slider{width:100%;overflow:hidden;position:relative}.next-btn,.prev-btn{position:absolute;top:8px}.testimonial{display:none;padding:20px;background:#f2f2f2}.testimonial:first-child{display:block}.next-btn,.prev-btn{background:red;font-size:large;padding:2px 9px;border-radius:20px;color:#fff;cursor:pointer}.prev-btn{left:8px}.next-btn{right:8px}.next-btn:hover,.prev-btn:hover{background-color:#101453}</style>
+
+<div class="testimonials-area mt-4 pt-4">
+
+    <div class="container">
+
+        <div class="text-center">
+            <h2 class="google-review-heading">See what our customers say on Google Reviews</h2>
+            <p class="text-center" style="font-size: large;font-weight: 300;">We value our customers` opinions, check out their google reviews to see why they trust us.</p>
+        </div>
+        <div class="text-center">
+            <img data-original="<?=BASE_URL?>/assets/img/google.jpg" alt="customer review" width="245px" style="position: relative;top: 20px;z-index: 100;border-radius: 28px;">
+        </div>
+
+        <div class="testimonials-slider google-review-slider d-flex home-review">
+
+            <?php   $client_review = $db->orderBy("sort_order", "asc")->get("client_review"); foreach($client_review as $cr): ?>
+                <div class='p-1 testimonial w-100' >
+                    <div class="testimonials-card  text-center main-color google-review-slider-child border border-2 border-danger p-4" style="background-color:#101453;border-radius:5px;">
+
+                    <div class="client-img">
+                        <?php if($page_type =="home"): ?>
+                            <img  data-original="<?=BASE_URL?>/admin/assets/image/clients/<?=$cr['profile']?>" style="height:100px !important" width="" alt="<?=$cr['name']?>">
+                        <?php else: ?>
+                            <img  data-original="<?=BASE_URL?>/admin/assets/image/clients/<?=$cr['profile']?>" style="height:100px !important" width="" alt="<?=$cr['name']?>">
+                        <?php endif; ?>
+                        <div class='text-light' style="font-size:21px;"><?=$cr['name']?></div></div>
+    
+                    <div class="rating">
+                        
+                         <?php for ($i = 0; $i < 5; $i++) { ?>
+                            <?php if ($cr["star"] > $i): ?>
+                                <span ><i class="fa fa-star " style="color:yellow"  aria-hidden="true"></i></span>
+                            <?php else: ?>
+                                <span ><i class="fa fa-star-o" style="color:yellow" aria-hidden="true"></i></span>
+                            <?php endif; ?>
+                        <?php } ?>
+                </div>
+    
+                    <div class="feedback-text text-light" >
+                        <?php if(str_word_count($cr['comment']) > 40): ?>
+                            <p style="color:white;font-size:large !important" class="limited-review-comment text-center"><?=word_limiter($cr['comment'],40, "")?> <span class="text-primary read_more_goole_review" style="cursor:pointer" id="read_more_goole_review">read more...</span></p>
+                            <p style="color:white;font-size:large !important" class="full-review-comment text-center"> <?=$cr['comment']?> <span class="text-primary less_more_goole_review" style="cursor:pointer" id="less_more_goole_review">less more...</span></p>
+                        <?php else : ?>
+                            <p style="color:white;font-size:large !important" class="text-center" ><?=$cr['comment']?> </p>
+                        <?php endif; ?>
+    
+                </div>
+
+                 </div>
+                </div>
+            <?php endforeach;?>
+            <div class="prev-btn"><i class="fa fa-arrow-left"></i></div>
+            <div class="next-btn"><i class="fa fa-arrow-right"></i></div>
+
+        </div>
+        
+        <div class="text-center d-flex justify-content-center gooogl-review-btn">
+            <button value="More Countries" class="default-btn-one btn-rounded google-review-btn mt-2">
+                <a id="google-review-link" href="https://www.google.com/search?q=rapidexworldwide&oq=rapidexworldwide&aqs=chrome..69i57j69i60l3j69i65j69i60l2j69i65.2651j0j7&sourceid=chrome&ie=UTF-8#lrd=0x390d054a16783821:0xc075b4a0880f82b,1,,,," target="blank" style="text-decoration:none; color:white;">More Google Reviews </a>
+                <i class='fa fa-arrow-right'></i>
+            </button>
+        </div>
+
+    </div>
+
+</div>
