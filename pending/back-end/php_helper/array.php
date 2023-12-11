@@ -76,5 +76,17 @@ function sortBykey($key){
 	});
 }
 
+function unique_multidimensional_array($array, $key) {
+    $tempArray = array();
+    $uniqueKeys = array();
+
+    foreach ($array as $item) {
+        if (!in_array($item[$key], $uniqueKeys)) {
+            $uniqueKeys[] = $item[$key];
+            $tempArray[] = $item;
+        }
+    }
+   return $tempArray;
+}
 
 ?>
