@@ -76,5 +76,18 @@ function sortBykey($key){
 	});
 }
 
+function uniqueArr2($array, $key) {
+    $tempArray = array();
+    $uniqueKeys = array();
+
+    foreach ($array as $item) {
+        if (!in_array($item[$key], $uniqueKeys)) {
+            $uniqueKeys[] = $item[$key];
+            $tempArray[] = $item;
+        }
+    }
+
+    return $tempArray;
+}
 
 ?>
