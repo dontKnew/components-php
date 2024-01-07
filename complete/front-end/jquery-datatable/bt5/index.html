@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <table id="example" class="display table table-striped table-bordered border-secondary table-hover" style="width:100%">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Country Name</th>
+                <th>Country Code</th>
+                <th>Currency</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    </table>
+  </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- button & pdf & csv & & print css -->
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+
+    <script>
+        new DataTable('#example', {
+            ajax: {url:'./bt5/data.php',type:'GET'},
+            select: true,
+            processing: true,
+            serverSide: true,
+            fixedHeader: true,
+            // scrollX: true, // scroll horizontal
+            // scrollY: '50vh',
+            // scrollCollapse: true, // scroll vertical
+            // paging: false, // pagination
+            // searching: false, // search
+            // info: false, // info
+            // lengthChange: false, // length change
+            // ordering: false, // ordering
+            // pagingType: 'full_numbers', // pagination type ( include first  and last)
+            
+             // include button library css & js & use below ..
+            /*dom: 'Bfrtip', // dom
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print'], 
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ],*/
+           /* exportOptions: {
+                columns: [0,1] // Column index which needs to export
+            }*/
+            
+            // stateSave: true, // save state of table order position etc..
+            // order: [[3, 'desc']] // default ordering...
+            lengthMenu: [[10, 30, 50, 75, -1], [10, 30, 50, 75, 'All']], // length menu
+            // columnDefs: [ // column definition (dont know)
+            //     {
+            //         targets: [0, 5],
+            //         orderable: false
+            //     }
+            // ],
+            // columns: [ // column name (dont know)
+            //     {data: 'id'},
+            //     {data: 'country_name'},
+            //     {data: 'country_code'},
+            //     {data: 'currency'},
+            //     {data: 'date'},
+            //     {data: 'action'}
+            // ],
+            language: { // language
+                paginate: {
+                    next: '>',
+                    previous: '<'
+                },
+                search: '_INPUT_',
+                searchPlaceholder: 'Search country...',
+                lengthMenu: 'Entries _MENU_',
+                info: 'Showing _START_ to _END_ of _TOTAL_ countries',
+                zeroRecords: 'No matching records found',
+                emptyTable: 'No data available in table',
+                infoEmpty: 'No records available',
+            },
+            drawCallback: function () { // draw callback (call function when data table is render)
+                $('.dataTables_paginate > .pagination').addClass('pagination-sm');
+            },
+            // initComplete: function () { // init complete (call function when data table is render)
+            //     alert(
+            //         'DataTables has finished its initialisation.'
+            //     )
+            // } ,
+            createdRow: function (row, data, dataIndex) { // created row (call function when data table is render)
+                if (dataIndex % 2 == 0) {
+                    $(row).addClass('table-light');
+                } else {
+                    $(row).addClass('table-warning');
+                }
+            },
+            /*rowCallback: function (row, data, index) { // row callback (call function when data table is render)
+                if (data[5].replace(/[\$,]/g, '') * 1 > 100000) {
+                    $('td:eq(5)', row).addClass('text-success');
+                }
+            },
+            headerCallback: function (thead, data, start, end, display) { // header callback (call function when data table is render)
+                $(thead).find('th').addClass('bg-dark text-white');
+            }, 
+            footerCallback: function (tfoot, data, start, end, display) { // footer callback (call function when data table is render)
+                $(tfoot).find('th').addClass('bg-dark text-white');
+            }, 
+            preDrawCallback: function (settings) { // pre draw callback (call function when data table is render)    
+                alert('DataTables is about to redraw');
+            },*/
+            
+        });
+    </script>
+</body>
+</html>

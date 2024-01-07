@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Country Name</th>
+                <th>Country Code</th>
+                <th>Currency</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Country Name</th>
+                <th>Country Code</th>
+                <th>Currency</th>
+                <th>Date</th>
+            </tr>
+        </tfoot>
+    </table>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script>
+        new DataTable('#example', {
+            ajax: './normal/data.php',
+            processing: true,
+            serverSide: true
+        });
+    </script>
+</body>
+</html>
