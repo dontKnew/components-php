@@ -7,6 +7,7 @@
 	iii. themewagon.com
 	iv. https://adminlte.io/
 	v. https://coreui.io/
+	vi. https://demos.wrappixel.com/free-admin-templates/bootstrap/matrix-bootstrap-free/html/tables.html (best)
 
 => UNLIMITED SCRIPT FOR PHP PREMIUM
 	1. https://www.hotscripts.com/category/scripts/php/scripts-programs/web-traffic-analysis/?RID=N568334 -
@@ -18,3 +19,6 @@
 
 = choosed Admin Panel
 	i. https://demo.dashboardpack.com/directory-html/
+
+==> CRM Features & Design  :
+	- https://prium.github.io/phoenix/v1.13.0/modules/forms/advance/date-picker.html
