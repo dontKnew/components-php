@@ -1,5 +1,17 @@
 {
     "require": {
-        "google/apiclient": "2.12.1"
+        "google/apiclient": "^2.15.0"
+    },
+    "scripts": {
+        "pre-autoload-dump": "Google\\Task\\Composer::cleanup",
+      "test": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit"
+        ]
+    },
+    "extra": {
+        "google/apiclient-services": [
+            "Drive"
+        ]
     }
 }

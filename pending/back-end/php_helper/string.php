@@ -256,6 +256,19 @@ function googleMapCode($iframeSrc){
     return $videoId;
  
 }
+function logs($message, $data=array()){
+    $timestamp = date('d-M-Y H:i A');
+    $logMessage = "<p style='color: red;'>[" . $timestamp . "] $message</p>";
+    if(!empty($data)){
+        $logMessage .= "<pre style='color: green;'>".json_encode($data, JSON_PRETTY_PRINT) . "</pre><hr>";
+    }else{
+        $logMessage .= "<hr>";
+    }
+    $existingContent = file_get_contents("logs.html");
+    $newContent = $logMessage . $existingContent;
+    file_put_contents("logs.html", $newContent);
+}
+
 
 
 ?>
