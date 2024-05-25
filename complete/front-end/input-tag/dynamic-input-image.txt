@@ -1,0 +1,197 @@
+1. HTML CODE 
+	<div class="col-md-12 mb-3 position-relative">
+                                 <label for="">Apartment Images Gallery</label>
+                                    <div class="image-container" >
+                                        <?php if(!empty($apartment_images)): ?>
+                                        <?php foreach($apartment_images as $k=>$img): ?>
+                                        <input type="hidden" name="apartment_images_id[<?=$img['index']?>][id]" value="<?=$img['id']?>">
+                                        <div id="image_container_<?=$img['index']?>" class="image-container-id">
+                                            <button type="button" data-id="<?=$img['index']?>" data-table-id="<?=$img['id']?>" class="btn btn-sm btn-danger image-remove-btn position-absolute end-0">Remove</button>
+                                            <div class="row my-2 border border-bottom border-1 border-primary">
+                                                <div class="col-md-1">
+                                                    <div class="mb-3 form-group">
+                                                        <label for="">Sr.No.</label>
+                                                        <input type="text" value="<?=$img['index']?>" class="form-control" name="apartment_images[index][<?=$img['index']?>]" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-11">
+                                                    <div class="mb-3 form-group">
+                                                        <label for="">Images</label>
+                                                        <input type="file" class="form-control image-input" name="apartment_images[image][<?=$img['index']?>]" accept="image/*" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <img src="<?=base_url('assets/img/apartment/'.$img['image'])?>" alt="" width="250" height="150">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php endforeach;?>
+                                        <?php else : $k=1;?>
+                                            <div id="image_container_<?=$k?>" class="image-container-id">
+                                            <button type="button" data-id="<?=$k?>" class="btn btn-sm btn-danger image-remove-btn position-absolute end-0">Remove</button>
+                                            <div class="row my-2 border border-bottom border-1 border-primary">
+                                                <div class="col-md-1">
+                                                    <div class="mb-3 form-group">
+                                                        <label for="">Sr.No.</label>
+                                                        <input type="text" value="<?=$k?>" class="form-control" name="apartment_images[index][<?=$k?>]" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-11">
+                                                    <div class="mb-3 form-group">
+                                                        <label for="">Images</label>
+                                                        <input type="file" class="form-control image-input" name="apartment_images[image][<?=$k?>]" accept="image/*" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-sm btn-primary" id="add-image">Add Image+ </button>
+                                    </div>
+                                </div> 
+
+2.JS CODE 
+ $('#add-image').click(function() {
+            let newIndex = $(".image-container-id").length+1;
+            
+            var htmlData = `<div id="image_container_${newIndex}" class="image-container-id">
+                            <button type="button" data-id="${newIndex}" class="btn btn-sm image-remove-btn btn-danger position-absolute end-0">Remove</button>
+                            <div class="row border border-bottom my-2 border-1 border-primary">
+                                <div class="col-md-1">
+                                    <div class="mb-3 form-group">
+                                        <label for="">Sr.No.</label>
+                                        <input type="text" value="${newIndex}" class="form-control" name="apartment_images[index][${newIndex}]" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-11">
+                                    <div class="mb-3 form-group">
+                                        <label for="">Images</label>
+                                        <input type="file" class="form-control image-input" name="apartment_images[image][${newIndex}]" accept="image/*" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+            
+            $('.image-container').append(htmlData);
+        });
+
+        // Remove image row
+        $(document).on('click', '.image-remove-btn', function() {
+            let Is_confirm = confirm("Are you sure want to delete ?");
+            if(!Is_confirm){
+                return false;
+            }
+            let id = $(this).data("id");
+            $(`#image_container_${id}`).remove();
+
+            let table_id = $(this).data("table-id");
+
+            $.ajax({
+                    url: '<?=base_url('apartment/list/delete/image/')?>'+table_id, 
+                    method: 'GET',
+                    dataType: 'json', 
+                    success: function(response){
+                        console.log(response);
+                    },
+                    error: function(xhr, status, error){
+                        // Handle error
+                        console.error(xhr.responseText);
+                    }
+                });
+        });
+
+
+3. PHP CODE 
+ic function save($id=null){
+        
+        $data = $this->request->getVar();
+        if($id==null){
+            $model = (new Table)->setTable("apartment");
+            $model->save(['apartment_name'=>$data['apartment_name']]);
+            $id = $model->getInsertID();
+        }
+        $data['id'] = $id;
+        $image_type = ['apartment_images', "apartment_floor_plan"];
+        foreach($image_type as $it){
+            // update sr no
+            if(!empty($data[$it.'_id']) && !empty($data[$it]['index'])){
+                $image_id = array_values($data[$it.'_id']); unset($data[$it.'_id']);
+                $updated_index = array_values($data[$it]['index']);
+                foreach($image_id as $k=>$d){
+                    (new Table)->setTable("apartment_gallery")->save(["id"=>$d, "index"=>$updated_index[$k]]);
+                }
+            }
+            //upload images..
+            $apartment_images = multi_upload($it, "assets/img/apartment");
+            foreach($apartment_images as $im){
+                $im['apartment_id'] = $id;
+                (new Table)->setTable("apartment_gallery")->save($im);    
+            }
+            unset($data[$it]);
+        }
+        
+        $data['apartment_extra']= json_encode($data['apartment_extra']);
+        (new Table)->setTable("apartment")->save($data);
+        return redirect()->route("apartment/list")->with("success", "list save Successfully");
+    }
+    
+    
+   function multi_upload(String $file_name, string $destination, string $newName = ''): bool|Array
+{
+    if(empty($_FILES[$file_name])){
+        return [];
+    }
+    $request = service('request');
+    $image_index = $request->getVar($file_name)['index'];
+    $apartment_images = $_FILES[$file_name];
+    $apartment_imagesArr = [];
+    // group the images,,
+    foreach($apartment_images as $k=>$ap){
+        foreach($ap['image'] as $key=>$a){
+            $apartment_imagesArr[$key][$k] = $a;
+        }
+    }
+    $images = [];
+    $uploadErrors = [];
+    foreach ($apartment_imagesArr as $k=>$image) {
+        if(!empty($image['name'])){
+            if ($image['error'] === UPLOAD_ERR_OK) {
+                $tmpName = $image['tmp_name'];
+            } else {
+                $uploadErrors[] = "File upload error: {$image['name']}";
+                continue; 
+            }
+        }else{
+            unset($image_index[$k]);
+            continue;
+        }
+
+        $fileInfo = pathinfo($image['name']);
+        $fileNameWithoutExtension = $fileInfo['filename'];
+        $extension = isset($fileInfo['extension']) ? '.' . $fileInfo['extension'] : '';
+        $cleanFileName = preg_replace('/[^\w]+/', '_', $fileNameWithoutExtension);
+        $newFileName = $newName ? $newName : uniqid('image_') . '_' . $cleanFileName . $extension;
+        $images[] = $newFileName;
+        $uploadPath = rtrim($destination, '/') . '/' . $newFileName;
+        if (!move_uploaded_file($tmpName, $uploadPath)) {
+            $uploadErrors[] = "Failed to move uploaded file: {$image['name']}";
+        }
+    }
+    
+    if (empty($uploadErrors)) {
+        $apartment_imagesArr = [];
+        $imagesArr = array_combine($image_index, $images);
+        foreach($imagesArr as $index=>$imgV){
+            $v = $index;
+            $apartment_imagesArr[intval($v)]['image'] = $imgV;
+            $apartment_imagesArr[intval($v)]['type'] = $file_name;
+            $apartment_imagesArr[intval($v)]['index'] = $index;
+        }    
+        // ksort($apartment_imagesArr);
+        return $apartment_imagesArr;
+    } else {
+        return [];
+    }
+
+}
