@@ -89,4 +89,8 @@ function unique_multidimensional_array($array, $key) {
    return $tempArray;
 }
 
+function remove_duplicate_array($array){
+	return array_map('unserialize', array_unique(array_map('serialize', $array)))
+}
+
 ?>
