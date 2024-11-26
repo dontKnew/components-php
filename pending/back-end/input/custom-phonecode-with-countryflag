@@ -1,0 +1,185 @@
+/*iti flag*/
+
+.iti {
+    position: relative
+}
+.iti__flag-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 1px
+}
+
+.iti--allow-dropdown input,.iti--allow-dropdown input[type=tel],.iti--allow-dropdown input[type=text],.iti--separate-dial-code input,.iti--separate-dial-code input[type=tel],.iti--separate-dial-code input[type=text] {
+    padding-right: 6px;
+    padding-left: 52px;
+    margin-left: 0
+}
+
+.iti input,.iti input[type=tel],.iti input[type=text] {
+    position: relative;
+    z-index: 0;
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+    padding-right: 36px;
+    margin-right: 0
+}
+
+.iti--allow-dropdown .iti__flag-container,.iti--separate-dial-code .iti__flag-container {
+    right: auto;
+    left: 0
+}
+
+.iti * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box
+}
+
+.iti__selected-flag {
+    z-index: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 6px 0 8px
+}
+
+.iti__flag.iti__is {
+    height: 15px;
+    background-position: -2501px 0
+}
+
+.iti__arrow {
+    margin-left: 6px;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid #555
+}
+
+.iti__country-list {
+    position: absolute;
+    z-index: 2;
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin: 0 0 0 -1px;
+    box-shadow: 1px 1px 4px rgb(0 0 0 / 20%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    white-space: normal;
+    height: 200px;
+    overflow-y: scroll;
+    width: 100%;
+    -webkit-overflow-scrolling: touch
+}
+
+.iti__hide {
+    display: none
+}
+
+.iti__country {
+    padding: 5px 10px;
+    outline: 0
+}
+
+.iti__flag-box {
+    display: inline-block;
+    width: 20px
+}
+
+.iti__flag.iti__us {
+    height: 11px;
+    background-position: -5263px 0
+}
+
+.iti__flag {
+    height: 15px;
+    box-shadow: 0 0 1px 0 #888;
+    /*background-image: url(../img/flags.png);*/
+    background-repeat: no-repeat;
+    background-color: #dbdbdb;
+    background-position: 20px 0;
+    width: 20px
+}
+
+.iti__country-name,.iti__flag-box {
+    margin-right: 6px
+}
+
+.iti__country-name,.iti__dial-code,.iti__flag-box {
+    vertical-align: middle
+}
+
+.iti__dial-code {
+    color: #999
+}
+/*iti end flag*/
+
+<div class="form-group">
+  <div class="iti iti--allow-dropdown">
+      <div class="iti__flag-container">
+        <div class="iti__selected-flag cursor-pointer">
+          <img src="<?=base_url()?>/images/flags/<?= $data['enquiry_data']['shipper_phonecode_flag'] ?? 'in.png' ?>" class="iti__flag iti_flag_img iti__in" alt="india country">
+          <div class="iti__arrow "></div>
+        </div>
+      </div>
+      <input id="phone" class="form-control list number-value" type="text" minlength="7" style="padding-left:50px !important" maxlength="18" value="<?= $data['enquiry_data']['shipper_phone'] ?? null ?>" title="required valid phone no"  placeholder="Enter Whatsapp No." name="shipper_phone" required>
+      <input type="hidden" name="shipper_phonecode" id="shipper_phonecode" value="<?= $data['enquiry_data']['shipper_phonecode'] ?? '+91' ?> ">
+      <div>
+          <input type="search" class="form-control" id="searchbar" placeholder="Search country..." style="padding:.375rem .75rem;margin:0;display:none" >
+     </div>
+      <ul class="iti__country-list iti__hide" role="listbox"></ul>
+    </div>
+</div>
+
+
+// form rates 
+$(document).on("click", ".iti__preferred, .iti__arrow", function(){
+    
+    let flag = $(this).attr('data-flag');
+    let phonecode = $(this).attr('data-phonecode');
+    let name = $(this).attr('data-country-name');
+    
+    
+    $(".iti_flag_img").attr('src', flag);
+    $("#shipper_phonecode").val('+'+phonecode);
+    
+    $(".iti__country-list, #searchbar").fadeOut();
+    
+    $(".iti__flag-container").fadeIn();
+    $('#phone').css('padding-left', '50px');
+    
+});
+
+$(".iti__flag-container, #searchbar").on("click input", function() {
+    var query = $("#searchbar").val();
+    let api_url = $("#api_url").val();
+    let domain = $("#domain").val();
+    
+    $.ajax({
+        url: api_url+"/common/country-phonecode",
+        type: 'GET',
+        data: {
+            domain: domain,
+            q: query
+        },
+        success: function(data) {
+            $('.iti__country-list, #searchbar').fadeIn();
+            $('.iti__country-list').html(data);
+        }
+    });
+});
+
+
+document.addEventListener("click", function(event) {
+    var countryList = document.querySelector(".iti__country-list");
+    if(countryList){
+        var clickedElement = event.target;
+        if (!countryList.contains(clickedElement)) {
+            $(".iti__country-list, #searchbar").fadeOut();
+        }
+    }   
+});
